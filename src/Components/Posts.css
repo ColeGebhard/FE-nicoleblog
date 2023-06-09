@@ -1,0 +1,47 @@
+.headline {
+    margin-top: 7em;
+    /* Adjust this value as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 4em;
+    
+}
+
+.headline h1 {
+    text-align: center;
+    color: #181A18;
+    position: relative;
+}
+
+.headline h1 a {
+    text-decoration: none;
+    color: #181A18;
+    position: relative;
+    transition: box-shadow 0.3s;
+}
+
+.headline h1 a:hover {
+    box-shadow: 0 .1em 0 0 #181A18, 0 .1em;
+}
+
+.headline h3 {
+    color: #181A18;
+}
+
+.headline p {
+    color: #181A18;
+    padding: 1em 3em;
+}
+
+.horizontalRule {
+    border-bottom: dotted .15em #2c3d10;
+    width: 100%;
+}
+
+.headline h2 {
+    text-align: left;
+    margin-left: 5em;
+    width: 100vw;
+    color: #181A18;
+}

@@ -1,0 +1,203 @@
+/*==========================
+  Sidebar navigation
+  ========================*/
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-bottom: dotted .15em #2c3d10;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0em;
+    background-color: #d5e7b8;
+    opacity: 1;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+
+.navbar::before {
+    content: "";
+    background-image: url('../../public/pngwing.com.png');
+    background-size: 0%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.3;
+    z-index: 0;
+
+}
+
+.mainTitle {
+    margin: 0;
+    font-weight: 500;
+    padding-left: 1em;
+    color: #2c3d10;
+    font-size: 3em;
+    z-index: 1;
+}
+
+button {
+    cursor: pointer;
+    padding-right: 1em;
+    background: transparent;
+    border: none;
+    font-size: 1.25em;
+    z-index: 1;
+    /* Equivalent to 20px */
+}
+
+.navbar .toggle {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    z-index: 10;
+    /* Increase the z-index */
+}
+
+.menu-nav {
+    list-style: none;
+    position: fixed;
+    background: #2c3d10;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    /* Use vw unit for full viewport width */
+    overflow: hidden;
+    /* max-width: 18.125em; Equivalent to 290px */
+    z-index: 9;
+    font-size: 1.125em;
+    /* Equivalent to 18px */
+    box-shadow: 0 0.625em 0.9375em -0.1875em rgba(46, 41, 51, 0.08),
+        0 0.25em 0.375em -0.125em rgba(71, 63, 79, 0.16);
+    transform: translateX(-100%);
+    margin-top: 0;
+    transition: transform ease-in-out 0.5s, padding 0.5s;
+}
+
+.menu-nav::before {
+    content: "";
+    background-image: url('../../public/pngwing.com.png');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+
+
+.menu-nav.show-menu {
+    transform: translateX(0%);
+    /* Add this line */
+    padding: 0;
+    z-index: 1;
+    transform-origin: right center;
+}
+
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../public/pngwing.com.png');
+    background-size: cover;
+    opacity: 0.5;
+    /* Adjust the opacity value as needed */
+    z-index: -1;
+    /* Move the background image behind other elements */
+    transition: opacity 0.5s;
+}
+
+
+
+.navLinksOpen {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8em;
+    padding-left: 6em;
+    gap: 1em;
+    width: 50%;
+    z-index: 1;
+    transition: margin-top ease-in-out 0.5s;
+}
+
+
+.navList {
+    text-decoration: none;
+    color: #d5e7b8;
+    font-size: 3em;
+    position: relative;
+    z-index: 1;
+}
+
+
+.navList::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: .05em;
+    background-color: #d5e7b8;
+    transition: width 0.4s;
+}
+
+.navList:hover::after {
+    width: 7em
+}
+
+@media (max-width: 768px) {
+    .navLinksOpen {
+        margin-top: 8em;
+        padding-left: 2em;
+        gap: 2em;
+        width: 100%;
+    }
+
+    button {
+        font-size: 2em;
+    }
+
+    .navList {
+        font-size: 4em;
+    }
+
+    /* Adjust other styles as needed */
+}
+
+
+
+@keyframes fadeInMenu {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+body.no-scroll {
+    overflow: hidden;
+    /* Hide scrollbars when the menu is open */
+}
+
+.hidden {
+    display: none;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
