@@ -7,10 +7,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #d5e7b8;
-  position:fixed;
+  position:absolute;
   width: 100vw;
   overflow-x: hidden;
-  height: 400em;
+  height: 100vh;
 }
 
 code {
