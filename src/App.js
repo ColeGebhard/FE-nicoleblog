@@ -50,19 +50,11 @@ function App() {
     };
   }, []);
 
-  const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <BrowserRouter>
       <div className="App">
         <Home me={me} />
-        {showScrollButton && (
-          <button className="scroll-button" onClick={handleScrollTop}>
-            Scroll to Top
-          </button>
-        )}
         <Routes>
           <Route path="/" element={<Posts posts={posts} />} />
           <Route path="/login" element={<Login setToken={setToken} />} />

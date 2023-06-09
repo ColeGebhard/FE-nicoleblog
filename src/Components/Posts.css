@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1em 4em;
-    
+    overflow-x: hidden;
 }
 
 .headline h1 {
@@ -23,6 +23,10 @@
 
 .headline h1 a:hover {
     box-shadow: 0 .1em 0 0 #181A18, 0 .1em;
+}
+
+.headline img {
+    max-width: 90vw;
 }
 
 .headline h3 {
