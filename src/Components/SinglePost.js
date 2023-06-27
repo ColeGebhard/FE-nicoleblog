@@ -3,9 +3,9 @@ import { redirect, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const SingleProduct = (props) => {
+const SinglePost = (props) => {
  
     
 }
 
-export default SingleProduct;
+export default SinglePost;

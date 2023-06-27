@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Home, Login, Posts, SinglePost } from './Components/index.js';
+import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { 
+  Home,
+  Login, 
+  Posts, 
+  SinglePost,
+  MakePost,
+ } from './Components/index.js';
 import { getAllPosts, isUser } from './Components/api.js';
 import './App.css';
 
@@ -13,7 +19,6 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(storedToken);
   const [me, setMe] = useState('');
-  const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
     getAllPosts()
@@ -37,27 +42,25 @@ function App() {
     }
   }, [token]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      setShowScrollButton(scrollTop > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-
   return (
     <BrowserRouter>
       <div className="App">
-        <Home me={me} />
+      <Home me={me} />
+
+      {me.isAdmin === true ? (
+          <div className="makeAPostDiv">
+              <Link
+                to={"/createPost"}
+              >
+                Make a Post
+              </Link>
+          </div>
+        ):null}
+
         <Routes>
           <Route path="/" element={<Posts posts={posts} />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route path="/createPost" element={<MakePost me={me}/>} />
         </Routes>
       </div>
     </BrowserRouter>

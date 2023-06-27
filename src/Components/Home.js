@@ -9,8 +9,7 @@ const Home = (props) => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false); // Track user login status
-  const [visible, setVisible] = useState(true);
-  const [scrollDirection, setScrollDirection] = useState("up");
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const prevScrollPosRef = useRef(0);
 
   const menuRef = useRef();
@@ -49,14 +48,16 @@ const Home = (props) => {
 
   const toggleMenu = () => {
     setNavbarOpen((prev) => !prev);
+    setDropdownOpen(false);
   };
 
+
   return (
-    <div className={`header ${scrollDirection === "down" ? "hide" : "show"}`}>
+    <div className={`header`}>
 
-      <nav className={`navbar ${visible ? "" : "hidden"}`}>
-
-        <h1 className="mainTitle">green growth</h1>
+      <nav className={`navbar`}>
+        
+        <NavLink to={'/'}className="mainTitle">green growth</NavLink>
 
         <button className="toggle" onClick={toggleMenu}>
           {navbarOpen ? (
@@ -86,13 +87,6 @@ const Home = (props) => {
                 to={'#'}
                 onClick={() => setNavbarOpen(false)}
               >
-                Hello
-              </NavLink>
-              <NavLink
-                className="navList"
-                to={'#'}
-                onClick={() => setNavbarOpen(false)}
-              >
                 What's new
               </NavLink>
               <NavLink
@@ -109,7 +103,7 @@ const Home = (props) => {
               >
                 Contact
               </NavLink>
-              {loggedIn ? (
+              {loggedIn === true ? (
                 <NavLink
                   className="navList"
                   to={'#'}
@@ -123,9 +117,11 @@ const Home = (props) => {
                   to={'/login'}
                   onClick={() => setNavbarOpen(false)}
                 >
-                  Login or Signup
+                  Login/Register            
                 </NavLink>
               )}
+
+
             </div>
           </li>
         </ul>

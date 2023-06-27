@@ -9,7 +9,6 @@ export async function getAllPosts() {
         },
       });
       const data = await response.json();
-      console.log(data)
       return data;
     } catch (error) {
       console.error(error);
@@ -29,7 +28,6 @@ export async function logInUser(email, password) {
         password: password
       })
     }).then(result => result.json());
-    console.log(response)
 
     return response
   } catch(e) {
@@ -47,7 +45,6 @@ export const isUser = async (token) => {
       });
       const data = await resp.json();
 
-      console.log(data)
       if (data.username) {
           return {
               id: data.id,
@@ -60,3 +57,36 @@ export const isUser = async (token) => {
       console.error(error);
   }
 };
+
+export async function createPost({
+  title,
+  body,
+  image,
+  date_created,
+  userId
+}) {
+
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        body,
+        image,
+        date_created,
+        userId
+      })
+    });
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to make post.');
+  }
+}

@@ -28,7 +28,6 @@
     left: 0px;
     opacity: 0.3;
     z-index: 0;
-
 }
 
 .mainTitle {
@@ -38,9 +37,10 @@
     color: #2c3d10;
     font-size: 3em;
     z-index: 1;
+    text-decoration: none;
 }
 
-button {
+button.toggle {
     cursor: pointer;
     padding-right: 1em;
     background: transparent;
@@ -69,7 +69,7 @@ button {
     /* Use vw unit for full viewport width */
     overflow: hidden;
     /* max-width: 18.125em; Equivalent to 290px */
-    z-index: 9;
+    z-index: 501;
     font-size: 1.125em;
     /* Equivalent to 18px */
     box-shadow: 0 0.625em 0.9375em -0.1875em rgba(46, 41, 51, 0.08),
@@ -156,21 +156,29 @@ button {
     width: 7em
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 1.5em 0em;
+    }
+
+    .mainTitle {
+        font-size: 2.2em;
+        padding-left: .5em;
+    }
+
     .navLinksOpen {
-        margin-top: 8em;
+        margin-top: 4em;
         padding-left: 2em;
         gap: 2em;
         width: 100%;
     }
 
     button {
-        font-size: 2em;
+        font-size: 1.2em;
     }
 
     .navList {
-        font-size: 4em;
-        color: red;
+        font-size: 3em;
     }
 
     /* Adjust other styles as needed */
