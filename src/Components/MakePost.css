@@ -18,3 +18,11 @@
 .notAdmin {
     /* margin-top: 10em; */
 }
+
+#titleInput {
+  border-radius: 1em;
+  border-color: #c0c0c0;
+  /* height: 4em; */
+  text-align: center;
+  font-size: 1.8em;
+}

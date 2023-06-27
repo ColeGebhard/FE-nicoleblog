@@ -19,6 +19,13 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(storedToken);
   const [me, setMe] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 0); // Simulate a 1-second loading time
+  }, []);
 
   useEffect(() => {
     getAllPosts()
@@ -42,7 +49,12 @@ function App() {
     }
   }, [token]);
 
-  return (
+  return loading ? (
+    <span className="loader">
+      <span className="loader-inner">
+      </span>
+    </span>
+  ) : (
     <BrowserRouter>
       <div className="App">
       <Home me={me} />
@@ -64,6 +76,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+  
   );
 }
 

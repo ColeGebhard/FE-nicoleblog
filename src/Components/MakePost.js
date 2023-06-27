@@ -107,7 +107,7 @@ const MakePost = (props) => {
               Photo
               <input
                 type="file"
-                id="titleInput"
+                id="d"
                 onChange={handleImageUpload}
               />
             </label>
@@ -115,7 +115,7 @@ const MakePost = (props) => {
               Category
               <input
                 type="text"
-                id="titleInput"
+                id="d"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />

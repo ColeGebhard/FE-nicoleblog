@@ -41,7 +41,6 @@ export default function TinyMCE(props) {
             'table',
             'help',
             'wordcount',
-            'image code',
           ],
           toolbar:
             'undo redo | casechange blocks | bold italic backcolor | ' +
