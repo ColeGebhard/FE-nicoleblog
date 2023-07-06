@@ -18,7 +18,7 @@ const Posts = (props) => {
                     </a>
                 </h1>
                 <h3>Nicole Bondurant</h3>
-                <img src="https://placeimg.com/700/500/nature" alt="placeholder" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Himalayas.jpg/1200px-Himalayas.jpg" alt="placeholder" />
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -37,12 +37,12 @@ const Posts = (props) => {
                         posts.map((post) => (
                             <div className="postCards" key={post.id}>
                                 <h2>{post.title}</h2>
-                                <p>{post.body}</p>
                                 <img
                                     id="postImage"
                                     alt={post.title}
                                     src={`data:image/jpeg;base64,${Buffer.from(post.image.data).toString("base64")}`}
                                 />
+                                <p>{post.body.replace(/(<([^>]+)>)/gi, '').split(' ').slice(0, 20).join(' ')}...</p>
                             </div>
                         ))
                     )}

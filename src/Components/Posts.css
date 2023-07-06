@@ -1,90 +1,108 @@
 .headline {
     margin-top: 5em;
-    /* Adjust this value as needed */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1em 1em;
+    padding: 1em;
     overflow-x: hidden;
-}
-
-.headline h1 {
+  }
+  
+  .headline h1 {
     text-align: center;
     color: #181A18;
-    position: relative;
     width: 95vw;
     font-size: 1.8em;
     overflow-x: hidden;
+    transition: text-decoration 5s ease-in; /* Add the property you want to transition */
+  }
 
-}
-
-.headline h1 a {
+  .headline h1 a {
     text-decoration: none;
     color: #181A18;
-    position: relative;
-    transition: box-shadow 0.3s;
-    overflow-x: hidden;
-
+    transition: text-decoration 5s ease-in; /* Add the property you want to transition */
 }
 
-.headline h1 a:active {
-    box-shadow: 0 .1em 0 0 #181A18, 0 .1em;
-    overflow-x: hidden;
-
-}
-
-.headline img {
+  .headline h1:hover{
+    text-decoration: underline;
+  }
+  
+  .headline img {
     max-width: 90vw;
     overflow-x: hidden;
-
-}
-
-.headline h3 {
+    max-height: 50vh;
+  }
+  
+  .headline h3 {
     color: #2f332f;
     overflow-x: hidden;
-    font-size: .8em;
-}
-
-.headline p {
+    font-size: 0.8em;
+  }
+  
+  .headline p {
     color: #181A18;
-    padding: 1em 0em;
+    padding: 1em 0;
     overflow-x: hidden;
-
-}
-
-.horizontalRule {
+  }
+  
+  .horizontalRule {
     border-bottom: dotted .15em #2c3d10;
     width: 100%;
     overflow-x: hidden;
-
-}
-
-.headline h2 {
-    text-align: left;
-    margin-left: 2em;
-    width: 100vw;
-    color: #181A18;
-    overflow-x: hidden;
-}
-
-.mainBody{
+  }
+  
+  .mainBody {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0em 1em;
     overflow-x: hidden;
-}
-
-.mainBody h2 {
+  }
+  
+  .mainBody h2 {
     text-align: left;
     margin-left: 2em;
     width: 95vw;
     color: #181A18;
     overflow-x: hidden;
-}
-
-.postCardContainer{
+  }
+  
+  .postCardContainer {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 2em;
-}
+    justify-content: space-around;
+  }
+  
+  .postCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(40% - 1em);
+    max-width: 400px;
+    margin: 0.5em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .postCards:hover {
+    transform: translateY(-5px);
+  }
+  
+  .postCards h2 {
+    width: 100%;
+    text-align: center;
+    margin: 1em 0;
+  }
+  
+  .postCards p {
+    text-align: center;
+  }
+  
+  .postCards img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  

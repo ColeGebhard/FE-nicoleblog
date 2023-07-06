@@ -3,11 +3,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1em;
 }
 
 .makePostForm {
     display: flex;
     flex-direction: column;
+    gap: 1em;
 }
 
 .formInput {
@@ -25,4 +27,18 @@
   /* height: 4em; */
   text-align: center;
   font-size: 1.8em;
+}
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview h1{
+    text-align: center;
+}
+
+.preview img {
+    width: 80%
 }

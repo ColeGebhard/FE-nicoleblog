@@ -42,11 +42,25 @@ export default function TinyMCE(props) {
             'help',
             'wordcount',
           ],
+          setup: function (editor) {
+            editor.on('keydown', function (e) {
+              if (e.keyCode === 9) { // Tab key
+                if (e.shiftKey) {
+                  editor.execCommand('Outdent');
+                } else {
+                  editor.execCommand('Indent');
+                }
+                e.preventDefault();
+                return false;
+              }
+            });
+          },
           toolbar:
             'undo redo | casechange blocks | bold italic backcolor | ' +
             'alignleft aligncenter alignright alignjustify | ' +
             'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help | image',
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+          
         }}
       />
     </>
