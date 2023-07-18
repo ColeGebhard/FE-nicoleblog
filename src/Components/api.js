@@ -65,7 +65,7 @@ export async function createPost({
   date_created,
   userId
 }) {
-
+  console.log(date_created)
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
@@ -81,6 +81,9 @@ export async function createPost({
       })
     });
     const data = await response.json();
+
+    console.log(data.date_created)
+
 
     console.log(data);
 

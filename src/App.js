@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
-import { 
+import {
   Home,
-  Login, 
-  Posts, 
+  Login,
+  Posts,
+  About,
   SinglePost,
   MakePost,
- } from './Components/index.js';
+  Footer
+} from './Components/index.js';
 import { getAllPosts, isUser } from './Components/api.js';
 import './App.css';
 
@@ -57,26 +59,32 @@ function App() {
   ) : (
     <BrowserRouter>
       <div className="App">
-      <Home me={me} />
 
-      {me.isAdmin === true ? (
+        {me.isAdmin === true ? (
           <div className="makeAPostDiv">
-              <Link
-                to={"/createPost"}
-              >
-                Make a Post
-              </Link>
+            <Link
+              to={"/createPost"}
+            >
+              Make a Post
+            </Link>
           </div>
-        ):null}
+        ) : null}
+
+        <Home me={me} />
+
 
         <Routes>
           <Route path="/" element={<Posts posts={posts} />} />
           <Route path="/login" element={<Login setToken={setToken} />} />
-          <Route path="/createPost" element={<MakePost me={me}/>} />
+          <Route path="/createPost" element={<MakePost me={me} />} />
+          <Route path="post/:id" element={<SinglePost posts={posts}/>} />
+          <Route path="/about" element={<About />} />
         </Routes>
+
+        <Footer />
       </div>
     </BrowserRouter>
-  
+
   );
 }
 

@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5em;
+  animation: transitionIn .5s;
 }
 
 #loginPage h1 {
@@ -14,7 +14,7 @@
   background-color: #d5e7b8;
   padding: 20px;
   border-radius: 5px;
-  width: 30em;
+  width: 25em;
   margin: 0 auto;
   margin-top: 20px;
   margin-bottom: 10px;
@@ -72,6 +72,20 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
 }
 
 /* Adjust the styling of the link as needed */

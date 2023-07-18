@@ -42,7 +42,7 @@ const MakePost = (props) => {
     event.preventDefault();
     const currentDate = new Date();
     const userId = me.id;
-    console.log(imageData);
+    console.log(currentDate.toISOString())
     const postData = {
       title,
       body: editorHtml,

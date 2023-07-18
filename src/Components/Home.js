@@ -57,7 +57,7 @@ const Home = (props) => {
 
       <nav className={`navbar`}>
         
-        <NavLink to={'/'}className="mainTitle">green growth</NavLink>
+        <NavLink to={'/'}className="mainTitle">Auburn Activist</NavLink>
 
         <button className="toggle" onClick={toggleMenu}>
           {navbarOpen ? (
@@ -91,7 +91,7 @@ const Home = (props) => {
               </NavLink>
               <NavLink
                 className="navList"
-                to={'#'}
+                to={'/about'}
                 onClick={() => setNavbarOpen(false)}
               >
                 About

@@ -1,0 +1,37 @@
+.aboutPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3em;
+  }
+  
+  .aboutPage img {
+    width: 24em;
+    height: 30em;
+    margin: 0 2em;
+    border-top-left-radius: 10em;
+    border-top-right-radius: 10em;
+    animation: transitionIn 0.75s;
+  }
+  
+  .aboutText {
+    width: 24em;
+    margin: 1em 2em;
+    opacity: 0; /* Set initial opacity to 0 */
+    animation: transitionIn .75s forwards;
+    animation-delay: 1s;
+  }
+  
+  @keyframes transitionIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  

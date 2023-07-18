@@ -2,7 +2,7 @@
   Sidebar navigation
   ========================*/
 .navbar {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;
@@ -15,6 +15,7 @@
     opacity: 1;
     transition: transform 0.5s, opacity 0.5s;
     overflow-x: hidden;
+    
 }
 
 
@@ -39,6 +40,8 @@
     font-size: 3em;
     z-index: 1;
     text-decoration: none;
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
 }
 
 button.toggle {
