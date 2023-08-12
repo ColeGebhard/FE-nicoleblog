@@ -11,6 +11,8 @@ import {
 } from './Components/index.js';
 import { getAllPosts, isUser } from './Components/api.js';
 import './App.css';
+import ScrollToTop from "./Components/ScrollToTop"; // Import the ScrollToTop component
+
 
 export const TOKEN_STORAGE_KEY = 'user-token';
 const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
@@ -22,6 +24,10 @@ function App() {
   const [token, setToken] = useState(storedToken);
   const [me, setMe] = useState('');
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -57,34 +63,25 @@ function App() {
       </span>
     </span>
   ) : (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+    {me.isAdmin === true ? (
+        <div className="makeAPostDiv">
+          <Link to={"/createPost"}>Make a Post</Link>
+        </div>
+      ) : null}
 
-        {me.isAdmin === true ? (
-          <div className="makeAPostDiv">
-            <Link
-              to={"/createPost"}
-            >
-              Make a Post
-            </Link>
-          </div>
-        ) : null}
+      <Home me={me} />
 
-        <Home me={me} />
+      <Routes>
+        <Route path="/" element={<Posts posts={posts} />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/createPost" element={<MakePost me={me} />} />
+        <Route path="post/:id" element={<SinglePost posts={posts} />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
 
-
-        <Routes>
-          <Route path="/" element={<Posts posts={posts} />} />
-          <Route path="/login" element={<Login setToken={setToken} />} />
-          <Route path="/createPost" element={<MakePost me={me} />} />
-          <Route path="post/:id" element={<SinglePost posts={posts}/>} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-
-        <Footer />
-      </div>
-    </BrowserRouter>
-
+      <Footer />
+    </div>
   );
 }
 

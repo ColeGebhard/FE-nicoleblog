@@ -1,7 +1,7 @@
 
 
 #root {
-  background-color: #d5e7b8;
+  background-color: #181A18;
   height: 100%;
 }
 
@@ -10,6 +10,7 @@
   font-family: -apple-system, Blin  kMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
+  background-color: #d5e7b8;
 }
 
 .makeAPostDiv {

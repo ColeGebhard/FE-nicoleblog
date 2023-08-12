@@ -16,19 +16,19 @@ const MakePost = (props) => {
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
-
+  
     // Check if the selected file is an image
     if (file && file.type.startsWith('image/')) {
       new Compressor(file, {
         quality: 0.6,
         maxWidth: 800,
         maxHeight: 800,
-        success(result) {
+        success(compressedResult) { // Use "compressedResult" instead of "result"
           const reader = new FileReader();
-
-          reader.readAsDataURL(result);
+  
+          reader.readAsDataURL(compressedResult); // Use the compressedResult directly
           reader.onload = (e) => {
-            setImageData(e.target.result);
+            setImageData(e.target.result); // Set the compressed image data
           };
         },
         error(err) {

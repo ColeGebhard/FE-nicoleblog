@@ -12,13 +12,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #d5e7b8;
-  position:absolute;
   width: 100vw;
   overflow-x: hidden;
   overflow-y: overlay;
-
-  height: 100vh;
-  /* overflow-y: scroll; */
   margin: 0;
 }
 

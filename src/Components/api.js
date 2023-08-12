@@ -93,3 +93,25 @@ export async function createPost({
     throw new Error('Failed to make post.');
   }
 }
+
+export async function subscribeEmail({email}) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email
+      })
+    });
+    const data = await response.json();
+
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to make post.');
+  }
+}

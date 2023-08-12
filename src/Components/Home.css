@@ -1,8 +1,9 @@
 /*==========================
   Sidebar navigation
   ========================*/
+  
 .navbar {
-    position: relative;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -72,6 +73,7 @@ button.toggle {
     width: 100vw;
     /* Use vw unit for full viewport width */
     overflow: hidden;
+    overflow-y: auto;
     /* max-width: 18.125em; Equivalent to 290px */
     z-index: 501;
     font-size: 1.125em;
@@ -81,6 +83,7 @@ button.toggle {
     transform: translateX(-100%);
     margin-top: 0;
     transition: transform ease-in-out 0.5s, padding 0.5s;
+    
 }
 
 .menu-nav::before {
@@ -104,6 +107,8 @@ button.toggle {
     padding: 0;
     z-index: 1;
     transform-origin: right center;
+    overflow: hidden;
+    
 }
 
 
@@ -133,6 +138,7 @@ button.toggle {
     width: 50%;
     z-index: 1;
     transition: margin-top ease-in-out 0.5s;
+    overflow: hidden;
 }
 
 
@@ -160,7 +166,7 @@ button.toggle {
     width: 7em
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 481px) {
     .navbar {
         padding: 1.5em 0em;
     }
@@ -204,8 +210,9 @@ button.toggle {
 
 body.no-scroll {
     overflow: hidden;
-    /* Hide scrollbars when the menu is open */
-}
+    position: fixed;
+    width: 100%;
+  }
 
 .hidden {
     display: none;
@@ -213,4 +220,67 @@ body.no-scroll {
 
 .no-scroll {
     overflow: hidden;
+}
+
+
+
+/* SubscribeForm.css */
+.emailForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 20em;
+  z-index: 100;
+}
+
+.emailInput {
+  width: 100%;
+  border: 1px solid #d5e7b8;
+  background-color: #d5e7b8;
+  margin-left: 0;
+  height: 38px;
+  padding: 1em; /* Reset padding */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.subscribeButton {
+  background-color: #d5e7b8;
+  color: #2c3d10;
+  border: 1px solid #d5e7b8;
+  cursor: pointer;
+  height: 38px;
+  margin-right: 0;
+  padding: 0 1em;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.emailFormField {
+    font-size: 1em;
+    padding: 0.5em 0;
+    border-radius: 1em;
+    border: none;
+    margin: 0;
+}
+
+label, input, button {
+    font-size: inherit;
+    padding: 0.2em;
+    margin: 0.1em 0.2em;
+    -moz-box-sizing: content-box; /* or `border-box` */
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+  
+.description {
+    font-size: 1em;
+    z-index: 100;
+    margin-top: 0;
+    font-weight: 500;
+    color: #d5e7b8;
+}
+
+.textSpan {
+    display: flex;
+    justify-content: space-between;
 }
