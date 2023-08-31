@@ -8,3 +8,65 @@
     display: flex;
     flex-direction: row;
 }
+
+.singlePost h1 {
+    text-align: center;
+    color: #181A18;
+    width: 95vw;
+    font-size: 1.7em;
+    overflow-x: hidden;
+}
+
+#postImage{
+    max-width: 90vw;
+    overflow-x: hidden;
+    max-height: 50vh;
+}
+
+.mainBody{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 1.5em;
+    gap: 1em;
+}
+
+.mainBody > * {
+    margin: 0;
+  }
+
+.singlePost h6{
+    margin: 2em 0 0 0;
+}
+
+.nextArticle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .readNext h2{
+    color: #181A18;
+    margin-left: 1em;
+    
+  }
+
+  .randomPostCard {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 1.5em;
+    padding: 1em;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;  }
+  
+  #randomPost {
+    width: 100%; /* Make sure the image fills the card width */
+    height: auto; /* Allow the image to adjust its height proportionally */
+  }
+
+  .randomPostCard h4{
+    text-decoration: none !important; /* Add !important to override any existing styles */
+    color: #181A18;
+  }
+  

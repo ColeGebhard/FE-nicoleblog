@@ -155,9 +155,6 @@ const Home = (props) => {
                 Contact
               </NavLink>
               <SubscribeForm />
-
-
-
             </div>
           </li>
         </ul>

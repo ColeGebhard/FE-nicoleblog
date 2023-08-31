@@ -115,3 +115,26 @@ export async function subscribeEmail({email}) {
     throw new Error('Failed to make post.');
   }
 }
+
+export async function getAllCategories() {
+  try {
+      const response = await fetch(`${BASE_URL}/categories`, {
+          headers: {
+              "Content-Type": "application/json",
+          },
+      });
+
+      if (!response.ok) {
+          throw new Error(`Failed to fetch categories: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      console.log(data);
+
+      return data;
+  } catch (error) {
+      console.error("Error while fetching categories:", error);
+      throw error; // Re-throw the error to be handled by the caller
+  }
+}

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Buffer } from "buffer";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import './SinglePost.css';
 
 const SinglePost = (props) => {
   const { posts } = props;
   const { id } = useParams();
   const post = posts.find((post) => parseInt(id) === post.id);
+
 
   const formatDate = (dateString) => {
     const dateObj = new Date(dateString);
@@ -33,26 +33,65 @@ const SinglePost = (props) => {
     });
   };
 
+  const getRandomIndices = (array, count, currentPost) => {
+    const candidates = array.filter(post => post.id !== currentPost.id);
+    const shuffledArray = candidates.slice();
+
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+
+    return shuffledArray.slice(0, count);
+  };
+
+  console.log(getRandomIndices(posts, 3, post))
+
+  const randomPosts = getRandomIndices(posts, 3, post)
+
   return post ? (
-    <div className="singlePost">
-      <h1>{post.title}</h1>
-      <img
-        id="postImage"
-        alt={post.title}
-        src={`data:image/jpeg;base64,${Buffer.from(post.image.data).toString(
-          "base64"
-        )}`}
-      />
-      <span className="numberText">
-        <h6>{formatDate(post.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6>
-        <h6> {calculateReadTime(post.body)} min read</h6>
+    <>
+      <div className="singlePost">
+        <h1>{post.title}</h1>
+        <img
+          id="postImage"
+          alt={post.title}
+          src={`data:image/jpeg;base64,${Buffer.from(post.image.data).toString(
+            "base64"
+          )}`}
+        />
+        <span className="numberText">
+          <h6>{formatDate(post.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6>
+          <h6> {calculateReadTime(post.body)} min read</h6>
+        </span>
+        <Link className="linkToBio" to="/about" onClick={scrollToTop}>
+          <h3>Nicole Bondurant</h3>
+        </Link>
+        {/* Display the paragraph content without rendering HTML tags */}
+        <div className="mainBody" dangerouslySetInnerHTML={{ __html: post.body }} />
+      </div>
+      <span className="readNext">
+        <h2>More Like This</h2>
+        <span className="nextArticle">
+          {randomPosts.map((randomPost) => (
+            <Link className="randomPostCard" key={randomPost.id} to={`/post/${randomPost.id}`}>
+              <img
+                id="randomPost"
+                alt={randomPost.title}
+                src={`data:image/jpeg;base64,${Buffer.from(randomPost.image.data).toString(
+                  "base64"
+                )}`}
+              />
+              <h4>{randomPost.title}</h4>
+              <span className="latestCardNum">
+                <h6>{formatDate(randomPost.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6> {/* Format the date here */}
+                <h6> {calculateReadTime(randomPost.body)} min read</h6> {/* Display estimated read time */}
+              </span>
+            </Link>
+          ))}
+        </span>
       </span>
-      <Link to="/about" onClick={scrollToTop}>
-        <h3>Nicole Bondurant</h3>
-      </Link>
-      {/* Display the paragraph content without rendering HTML tags */}
-      <p dangerouslySetInnerHTML={{ __html: post.body }} />
-    </div>
+    </>
   ) : (
     <h1>No Post Found</h1>
   );

@@ -1,18 +1,8 @@
-.headline {
-  margin-top: .5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 1em;
-  overflow-x: hidden;
-}
-
+/* Base styles for mobile */
 .headline h1 {
+  font-size: 1.8em;
   text-align: center;
   color: #181A18;
-  width: 95vw;
-  font-size: 1.8em;
-  overflow-x: hidden;
 }
 
 .headline h1 a {
@@ -26,55 +16,36 @@
 
 .headline img {
   max-width: 90vw;
-  overflow-x: hidden;
   max-height: 50vh;
 }
 
 .headline h3 {
-  color: #2f332f;
-  overflow-x: hidden;
   font-size: 0.8em;
+  color: #2f332f;
 }
 
 .headline p {
-  color: #181A18;
   padding: 1em 0;
-  overflow-x: hidden;
+  color: #181A18;
 }
 
 .horizontalRule {
-  border-bottom: dotted .15em #2c3d10;
   width: 100%;
-  overflow-x: hidden;
-}
-
-.mainBody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0em 1em;
-  overflow-x: hidden;
+  border-bottom: dotted .15em #2c3d10;
 }
 
 .mainBody h2 {
+  font-size: 1.2em;
   text-align: left;
   margin-left: 2em;
-  width: 95vw;
   color: #181A18;
-  overflow-x: hidden;
 }
 
 .postCardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   margin: .5em 0;
 }
 
 .postCards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 0.5em 0;
   padding: 1em;
   border: 1px solid #ddd;
@@ -84,9 +55,8 @@
 }
 
 .postCards h2 {
-  width: 100%;
-  text-align: center;
   margin: 1em 0;
+  font-size: 1em;
 }
 
 .postCards p {
@@ -95,10 +65,8 @@
 
 .postCards img {
   width: 100%;
-  height: auto;
   border-radius: 4px;
   transition: box-shadow 0.3s;
-  /* Add a transition for a smooth effect */
 }
 
 .postCards img:active,
@@ -106,16 +74,9 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
-.linkCards {
-  text-decoration: none;
-}
-
 .missionStatement {
-  color: #525a52;
   font-size: 1.8em;
-  animation: transitionIn 0.75s;
-  transition: background-position 0.3s ease; /* Add a transition effect */
-  width: 90vw;
+  color: #525a52;
 }
 
 .missionStatement a {
@@ -123,20 +84,14 @@
   background-image: linear-gradient(90deg, #7ccc89af 50%, transparent 50%);
   background-size: 200% 50%;
   text-decoration: none;
-  transition: background-position 0.3s ease; /* Add a transition effect */
 }
 
 .missionStatement a:hover {
   background-image: none;
   border-bottom: 1px dotted #2f332f;
-  transition: background-position 0.3s ease; /* Add a transition effect */
-
 }
 
 .featuredCards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 0.5em 0;
   padding: 1em;
   border: 1px solid #ddd;
@@ -145,69 +100,24 @@
   transition: transform 0.3s ease-in-out;
 }
 
-@media screen and (max-width: 481px) {
-  .postCardContainer {
-    flex-direction: column;
-  }
-
-  .postCards {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .postCards h2 {
-    font-weight: 400;
-    text-align: left;
-    margin-top: .5em;
-  }
-
-  .postCards p {
-    display: none;
-  }
-
-  .postCards img {
-    width: 9em;
-    height: 9em;
-    
-    border-radius: 4px;
-    transition: opacity 0.3s;
-    /* Add a transition for a smooth effect */
-  }
-
-  .postCards img:active,
-  .postCards img:hover {
-    opacity: 0.8;
-    /* Adjust the opacity for the image on hover */
-  }
-
-  .postCards :nth-child(2) {
-    order: 1;
-    /* Change the order of the second child */
-  }
-
-  .latestCardsText {
-    margin-bottom: 0;
+@media screen and (min-width: 481px) {
+  /* Adjustments for larger screens */
+  .headline {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+    overflow-x: hidden;
   }
 
-  .latestCardNum {
-    display: flex;
-    font-size: 1.1em;
-    color: #525a52;
+  .headline h1 {
+    width: 95vw;
   }
-
-  .latestCardNum h6 {
-    margin-bottom: 1em;
-  }
-
 
   .featuredCards {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85vw;
   }
 
   .featuredCardText {
@@ -227,22 +137,8 @@
     border-radius: 50%;
   }
 
-  .featuredCards :nth-child(2) {
-    order: -1;
-  }
-
-
   .featuredCards h2 {
-    font-weight: 400;
-    text-align: left;
-    margin: 1em;
-    /* padding-left: 1em; */
-    text-align: center;
     font-size: 1.7em;
-  }
-
-  .featuredCards p {
-    display: none;
   }
 }
 
@@ -254,7 +150,6 @@
   animation: transitionIn 0.75s;
 }
 
-
 @keyframes transitionIn {
   from {
     opacity: 0;
@@ -265,6 +160,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-
-
 }

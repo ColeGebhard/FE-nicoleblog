@@ -9,7 +9,7 @@ import {
   MakePost,
   Footer
 } from './Components/index.js';
-import { getAllPosts, isUser } from './Components/api.js';
+import { getAllPosts, isUser, getAllCategories } from './Components/api.js';
 import './App.css';
 import ScrollToTop from "./Components/ScrollToTop"; // Import the ScrollToTop component
 
@@ -24,6 +24,7 @@ function App() {
   const [token, setToken] = useState(storedToken);
   const [me, setMe] = useState('');
   const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,6 +47,16 @@ function App() {
   }, []);
 
   useEffect(() => {
+    getAllCategories()
+      .then((categories) => {
+        setCategories(categories);
+      })
+      .catch((e) => {
+        console.error('Failed to load Posts');
+      });
+  }, []);
+
+  useEffect(() => {
     if (token) {
       isUser(token)
         .then((me) => {
@@ -56,6 +67,8 @@ function App() {
         });
     }
   }, [token]);
+
+  console.log(categories)
 
   return loading ? (
     <span className="loader">
@@ -75,7 +88,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Posts posts={posts} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/createPost" element={<MakePost me={me} />} />
+        <Route path="/createPost" element={<MakePost me={me} categories={categories}/>} />
         <Route path="post/:id" element={<SinglePost posts={posts} />} />
         <Route path="/about" element={<About />} />
       </Routes>

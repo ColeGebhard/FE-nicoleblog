@@ -6,37 +6,64 @@ import TinyMCE from './TinyMCE';
 import './MakePost.css';
 
 const MakePost = (props) => {
-  const { me } = props;
+  const { me, categories } = props;
   const admin = me.isAdmin;
 
   const [title, setTitle] = useState('');
   const [imageData, setImageData] = useState(null);
+  const [category, setCategory] = useState('');
   const [previewMode, setPreviewMode] = useState(false);
   const [editorHtml, setEditorHtml] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
-  
+
+    setErrorMessage('');
+
+
     // Check if the selected file is an image
     if (file && file.type.startsWith('image/')) {
-      new Compressor(file, {
-        quality: 0.6,
-        maxWidth: 800,
-        maxHeight: 800,
-        success(compressedResult) { // Use "compressedResult" instead of "result"
-          const reader = new FileReader();
-  
-          reader.readAsDataURL(compressedResult); // Use the compressedResult directly
-          reader.onload = (e) => {
-            setImageData(e.target.result); // Set the compressed image data
-          };
-        },
-        error(err) {
-          console.log(err.message);
-        },
-      });
+      const targetMaxFileSize = 50 * 1024; // 500KB (adjust to your desired size)
+      let currentQuality = 0.7; // Starting quality value
+
+      const compressImage = () => {
+        if (currentQuality < 0.1) {
+          setErrorMessage("Image too large, select a new one");
+          return;
+        }
+
+        new Compressor(file, {
+          quality: currentQuality,
+          maxWidth: 700,
+          maxHeight: 700,
+          success(compressedResult) {
+            const compressedSize = compressedResult.size;
+
+            if (compressedSize <= targetMaxFileSize) {
+              const reader = new FileReader();
+
+              reader.readAsDataURL(compressedResult);
+              reader.onload = (e) => {
+                setImageData(e.target.result);
+              };
+            } else {
+              // Reduce quality and try again
+              currentQuality -= 0.1; // Decrease quality
+              compressImage();
+            }
+          },
+          error(err) {
+            console.log(err.message);
+          },
+        });
+      };
+
+      compressImage();
     }
   };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,6 +96,8 @@ const MakePost = (props) => {
     setPreviewMode(false);
   };
 
+  console.log(category)
+
   const renderPreview = () => {
     return (
       <div className="preview">
@@ -95,6 +124,20 @@ const MakePost = (props) => {
               />
             </label>
             <label className="formInput">
+              Photo
+              <input
+                type="file"
+                id="imageUpload"
+                onChange={handleImageUpload}
+                className="fileInput"
+              />
+            </label>
+            <div className="errorContainer">
+              {errorMessage && <p className="errorMessage">{errorMessage}</p>}
+            </div>
+
+
+            <label className="formInput">
               Body
               <div className="TinyMCE-container">
                 <TinyMCE
@@ -104,23 +147,22 @@ const MakePost = (props) => {
               </div>
             </label>
             <label className="formInput">
-              Photo
-              <input
-                type="file"
-                id="d"
-                onChange={handleImageUpload}
-              />
-            </label>
-            <label className="formInput">
               Category
-              <input
-                type="text"
-                id="d"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
+              <select
+                name="category"
+                className='categorySelect'
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="" disabled>Select a Category</option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
             </label>
-            <button type="submit">Create listing</button>
+            <button className='submitButton' type="submit">Create Post</button>
           </form>
           {previewMode ? (
             <>
