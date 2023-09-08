@@ -8,7 +8,7 @@ import { subscribeEmail } from './api';
 const Home = (props) => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [,setDropdownOpen] = useState(false)
 
   const menuRef = useRef();
 
