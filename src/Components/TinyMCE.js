@@ -13,7 +13,7 @@ export default function TinyMCE(props) {
       <Editor
         onEditorChange={handleEditorChange}
         onInit={(evt, editor) => (editorRef.current = editor)}
-        initialValue="<p>This is the initial content of the editor.</p>"
+        initialValue={props.initialContent}
         init={{
           height: 500,
           menubar: false,

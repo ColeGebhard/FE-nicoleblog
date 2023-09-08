@@ -1,0 +1,69 @@
+.adminPage h1{
+    text-align: center;
+}
+
+.adminPage h2{
+    margin-left: 1em;
+}
+
+.headlinePost{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    position: relative;
+    padding: .5em;
+}
+
+.headlinePost h1{
+    text-align: center;
+    margin: 1em 3em;
+    font-size: 1.5em;
+}
+
+.headlinePost img{
+    width: 60vw;
+    height: auto;
+}
+
+#editButton{
+    position: absolute;
+    right: 0;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 2px;
+}
+
+#editButton img, #deleteButton img{
+    width: 2em;
+    margin: 0;
+}
+
+#deleteButton{
+    position: absolute;
+    left: 0;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 2px;
+}
+
+.allAdminPostCards{
+    display: flex;
+    flex-direction: column;
+}
+
+.allAdminCard{
+    border: 1px black solid;
+    margin: 1em;
+
+}
+
+.allAdminPost{
+    display: flex;
+    justify-content: center;
+    margin: .5em;
+    position: relative;
+}

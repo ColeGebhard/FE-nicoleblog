@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link, redirect, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { subscribeEmail } from './api';
 import './Footer.css';
 
@@ -24,7 +22,7 @@ const Footer = (props) => {
                     window.alert('Subscribe success');
                 }
             } catch (e) {
-                console.log('Failed to subscribe', e);
+                console.error('Failed to subscribe', e);
             }
         };
 
@@ -79,16 +77,16 @@ const Footer = (props) => {
             <div className="devBio">
                 <h4>Site made and maintained by Nicholas Cole Gebhard </h4>
                 <span className="devLinksParent">
-                    <a target="_blank" rel="noreferrer" href={""}>
+                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img className="devLinks" alt="gitHub" src="../images/github-mark.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={""}>
+                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img id="personalPage" className="devLinks" alt="personalPage" src="../images/1174949_js_react js_logo_react_react native_icon.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={""}>
+                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img className="devLinks" alt="linkedIn" src="../images/LI-In-Bug.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={""}>
+                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img className="devLinks" alt="beerMe" src="../images/Daco_4674844.png" />
                     </a>
                 </span>

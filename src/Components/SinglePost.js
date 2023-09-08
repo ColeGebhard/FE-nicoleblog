@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Buffer } from "buffer";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import './SinglePost.css';
 
 const SinglePost = (props) => {
@@ -45,8 +45,6 @@ const SinglePost = (props) => {
     return shuffledArray.slice(0, count);
   };
 
-  console.log(getRandomIndices(posts, 3, post))
-
   const randomPosts = getRandomIndices(posts, 3, post)
 
   return post ? (
@@ -68,11 +66,15 @@ const SinglePost = (props) => {
           <h3>Nicole Bondurant</h3>
         </Link>
         {/* Display the paragraph content without rendering HTML tags */}
-        <div className="mainBody" dangerouslySetInnerHTML={{ __html: post.body }} />
+        <div className="mainBodySingle" dangerouslySetInnerHTML={{ __html: post.body }} />
       </div>
       <span className="readNext">
+        <div className="horizontalRule" />
         <h2>More Like This</h2>
+        <div className="horizontalRule" />
+
         <span className="nextArticle">
+
           {randomPosts.map((randomPost) => (
             <Link className="randomPostCard" key={randomPost.id} to={`/post/${randomPost.id}`}>
               <img
@@ -83,7 +85,7 @@ const SinglePost = (props) => {
                 )}`}
               />
               <h4>{randomPost.title}</h4>
-              <span className="latestCardNum">
+              <span className="numberText">
                 <h6>{formatDate(randomPost.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6> {/* Format the date here */}
                 <h6> {calculateReadTime(randomPost.body)} min read</h6> {/* Display estimated read time */}
               </span>

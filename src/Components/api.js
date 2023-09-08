@@ -1,25 +1,24 @@
 const BASE_URL = "http://localhost:8000/api"
 
 export async function getAllPosts() {
-    try {
-      const response = await fetch(`${BASE_URL}/posts`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        },
-      });
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error(error);
-      throw new Error('Cannot get products');
-    }
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Cannot get products');
   }
+}
 
 export async function logInUser(email, password) {
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
-      method:"POST",
+      method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
@@ -30,31 +29,31 @@ export async function logInUser(email, password) {
     }).then(result => result.json());
 
     return response
-  } catch(e) {
+  } catch (e) {
     throw e;
   }
 }
 
 export const isUser = async (token) => {
   try {
-      const resp = await fetch(`${BASE_URL}/users/me`, {
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-          },
-      });
-      const data = await resp.json();
+    const resp = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const data = await resp.json();
 
-      if (data.username) {
-          return {
-              id: data.id,
-              username: data.username,
-              isAdmin: data.isAdmin
-          };
-      }
-      return false;
+    if (data.username) {
+      return {
+        id: data.id,
+        username: data.username,
+        isAdmin: data.isAdmin
+      };
+    }
+    return false;
   } catch (error) {
-      console.error(error);
+    throw error
   }
 };
 
@@ -63,9 +62,10 @@ export async function createPost({
   body,
   image,
   date_created,
-  userId
+  userId,
+  categoryId,
+  isHeadline,
 }) {
-  console.log(date_created)
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
@@ -77,24 +77,21 @@ export async function createPost({
         body,
         image,
         date_created,
-        userId
+        userId,
+        categoryId, // Include categoryId
+        isHeadline, // Include isHeadline
       })
     });
     const data = await response.json();
 
-    console.log(data.date_created)
-
-
-    console.log(data);
-
     return data;
   } catch (error) {
-    console.error(error);
     throw new Error('Failed to make post.');
   }
 }
 
-export async function subscribeEmail({email}) {
+
+export async function subscribeEmail({ email }) {
   try {
     const response = await fetch(`${BASE_URL}/posts/subscribe`, {
       method: "POST",
@@ -107,34 +104,59 @@ export async function subscribeEmail({email}) {
     });
     const data = await response.json();
 
-    console.log(data);
-
     return data;
   } catch (error) {
-    console.error(error);
-    throw new Error('Failed to make post.');
+    throw new Error('Failed to make post.', error);
   }
 }
 
 export async function getAllCategories() {
   try {
-      const response = await fetch(`${BASE_URL}/categories`, {
-          headers: {
-              "Content-Type": "application/json",
-          },
-      });
+    const response = await fetch(`${BASE_URL}/categories`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-      if (!response.ok) {
-          throw new Error(`Failed to fetch categories: ${response.statusText}`);
-      }
+    if (!response.ok) {
+      throw new Error(`Failed to fetch categories: ${response.statusText}`);
+    }
 
-      const data = await response.json();
+    const data = await response.json();
 
-      console.log(data);
 
-      return data;
+    return data;
   } catch (error) {
-      console.error("Error while fetching categories:", error);
-      throw error; // Re-throw the error to be handled by the caller
+    throw new Error("Could not get categories", error); // Re-throw the error to be handled by the caller
   }
 }
+
+export async function updatePost(updatedPostData, token) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${updatedPostData.postId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        title: updatedPostData.title,
+        body: updatedPostData.body,
+        image: updatedPostData.image,
+        categoryId: updatedPostData.categoryId,
+        isHeadline: updatedPostData.isHeadline,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update post.');
+    }
+
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Failed to update post.');
+  }
+}
+

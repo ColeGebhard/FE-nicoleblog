@@ -16,11 +16,9 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(email,password)
     try{
       const result = await logInUser(email, password)
 
-      console.log(result)
       if(result) {
         localStorage.removeItem(TOKEN_STORAGE_KEY);
         localStorage.setItem(TOKEN_STORAGE_KEY, result.token)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import {
   Home,
   Login,
@@ -7,17 +7,17 @@ import {
   About,
   SinglePost,
   MakePost,
-  Footer
+  Footer,
+  Admin,
+  EditPost
 } from './Components/index.js';
 import { getAllPosts, isUser, getAllCategories } from './Components/api.js';
 import './App.css';
-import ScrollToTop from "./Components/ScrollToTop"; // Import the ScrollToTop component
 
 
 export const TOKEN_STORAGE_KEY = 'user-token';
 const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY);
 export const USER_STORAGE_KEY = 'user-username';
-const storedUser = localStorage.getItem(USER_STORAGE_KEY);
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -37,9 +37,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getAllPosts()
-      .then((posts) => {
-        setPosts(posts);
+    getAllCategories()
+      .then((categories) => {
+        setCategories(categories);
       })
       .catch((e) => {
         console.error('Failed to load Posts');
@@ -47,9 +47,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getAllCategories()
-      .then((categories) => {
-        setCategories(categories);
+    getAllPosts()
+      .then((posts) => {
+        setPosts(posts);
       })
       .catch((e) => {
         console.error('Failed to load Posts');
@@ -68,8 +68,6 @@ function App() {
     }
   }, [token]);
 
-  console.log(categories)
-
   return loading ? (
     <span className="loader">
       <span className="loader-inner">
@@ -77,9 +75,10 @@ function App() {
     </span>
   ) : (
     <div className="App">
-    {me.isAdmin === true ? (
+      {me.isAdmin === true ? (
         <div className="makeAPostDiv">
           <Link to={"/createPost"}>Make a Post</Link>
+          <Link to={"/adminfeatures"}>Admin Features</Link>
         </div>
       ) : null}
 
@@ -88,9 +87,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Posts posts={posts} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        <Route path="/createPost" element={<MakePost me={me} categories={categories}/>} />
+        <Route path="/createPost" element={<MakePost posts={posts} me={me} categories={categories} token={token} />} />
         <Route path="post/:id" element={<SinglePost posts={posts} />} />
+        <Route path="editpost/:id" element={<EditPost posts={posts} me={me} categories={categories} token={token} />} />
         <Route path="/about" element={<About />} />
+        <Route path="/adminfeatures" element={<Admin posts={posts} me={me} categories={categories} />} />
       </Routes>
 
       <Footer />

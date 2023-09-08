@@ -4,11 +4,6 @@
     flex-direction: column;
 }
 
-.numberText {
-    display: flex;
-    flex-direction: row;
-}
-
 .singlePost h1 {
     text-align: center;
     color: #181A18;
@@ -17,13 +12,14 @@
     overflow-x: hidden;
 }
 
-#postImage{
-    max-width: 90vw;
-    overflow-x: hidden;
-    max-height: 50vh;
+.singlePost img {
+    width: 90vw;
+    height: auto;
+    border-radius: 2px;
 }
 
-.mainBody{
+
+.mainBodySingle{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -31,7 +27,7 @@
     gap: 1em;
 }
 
-.mainBody > * {
+.mainBodySingle > * {
     margin: 0;
   }
 
@@ -63,7 +59,15 @@
   #randomPost {
     width: 100%; /* Make sure the image fills the card width */
     height: auto; /* Allow the image to adjust its height proportionally */
+    border-radius: 5px;
   }
+
+  .numberText {
+    display: flex;
+    flex-direction: row;
+    gap: .2em;
+    color: #181A18;
+}
 
   .randomPostCard h4{
     text-decoration: none !important; /* Add !important to override any existing styles */

@@ -6,20 +6,11 @@ import './Home.css';
 import { subscribeEmail } from './api';
 
 const Home = (props) => {
-  const { me } = props;
 
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false); // Track user login status
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const prevScrollPosRef = useRef(0);
 
   const menuRef = useRef();
-
-  useEffect(() => {
-    if (me) {
-      setLoggedIn(true);
-    }
-  }, [me]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -76,7 +67,7 @@ const Home = (props) => {
           window.alert('Subscribe success');
         }
       } catch (e) {
-        console.log('Failed to subscribe', e);
+        console.err('Failed to subscribe', e);
       }
     };
 

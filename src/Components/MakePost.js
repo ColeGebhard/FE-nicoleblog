@@ -11,26 +11,26 @@ const MakePost = (props) => {
 
   const [title, setTitle] = useState('');
   const [imageData, setImageData] = useState(null);
-  const [category, setCategory] = useState('');
   const [previewMode, setPreviewMode] = useState(false);
   const [editorHtml, setEditorHtml] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [categoryId, setCategoryId] = useState('');
+  const [isHeadline, setIsHeadline] = useState(false); // Added
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
 
     setErrorMessage('');
 
-
     // Check if the selected file is an image
     if (file && file.type.startsWith('image/')) {
-      const targetMaxFileSize = 50 * 1024; // 500KB (adjust to your desired size)
+      const targetMaxFileSize = 100 * 1024; // 500KB (adjust to your desired size)
       let currentQuality = 0.7; // Starting quality value
 
+      // automatically compresses image if size is too large
       const compressImage = () => {
         if (currentQuality < 0.1) {
-          setErrorMessage("Image too large, select a new one");
+          setErrorMessage('Image too large, select a new one'); // Set an error message
           return;
         }
 
@@ -55,48 +55,54 @@ const MakePost = (props) => {
             }
           },
           error(err) {
-            console.log(err.message);
+            console.error(err.message);
           },
         });
       };
 
       compressImage();
+    } else {
+      setErrorMessage('Invalid file format, please select an image.');
     }
   };
 
 
+  //handle submission of new posts
   const handleSubmit = async (event) => {
     event.preventDefault();
     const currentDate = new Date();
     const userId = me.id;
-    console.log(currentDate.toISOString())
+
     const postData = {
       title,
       body: editorHtml,
       image: imageData,
       date_created: currentDate.toISOString(),
       userId,
+      categoryId,
+      isHeadline
     };
 
     try {
       const response = await createPost(postData);
-      console.log(response);
+      return response
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
+
 
   const handlePreview = (event) => {
     event.preventDefault();
     setPreviewMode(true);
   };
 
+  //incorperated useState to give a preview of posts before submission
+
   const handleCancelPreview = (event) => {
     event.preventDefault();
     setPreviewMode(false);
   };
-
-  console.log(category)
 
   const renderPreview = () => {
     return (
@@ -150,17 +156,30 @@ const MakePost = (props) => {
               Category
               <select
                 name="category"
-                className='categorySelect'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                className="categorySelect"
+                value={categoryId}
+                onChange={(e) => setCategoryId(e.target.value)}
               >
-                <option value="" disabled>Select a Category</option>
+                <option value="" disabled>
+                  Select a Category
+                </option>
                 {categories.map((category) => (
-                  <option key={category.id} value={category.name}>
+                  <option key={category.id} value={category.id}>
                     {category.name}
                   </option>
                 ))}
               </select>
+            </label>
+
+            <label className="formInput">
+              Headline Article?
+              <h6>*Selecting this option will replace the current headline</h6>
+              <input
+                type="checkbox"
+                id="headlineCheckbox"
+                checked={isHeadline}
+                onChange={(e) => setIsHeadline(e.target.checked)}
+              />
             </label>
             <button className='submitButton' type="submit">Create Post</button>
           </form>

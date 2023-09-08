@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { redirect, useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import './About.css';
 
 

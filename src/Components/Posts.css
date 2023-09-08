@@ -1,4 +1,12 @@
 /* Base styles for mobile */
+.headline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1em;
+  overflow-x: hidden;
+}
+
 .headline h1 {
   font-size: 1.8em;
   text-align: center;
@@ -25,13 +33,21 @@
 }
 
 .headline p {
-  padding: 1em 0;
+  max-width: 90vw;
+  /* padding: 1em .3em; */
   color: #181A18;
 }
 
 .horizontalRule {
-  width: 100%;
+  /* width: 90%; */
   border-bottom: dotted .15em #2c3d10;
+  margin: .5em 1.5em;
+
+}
+
+.mainBody{
+  display: flex;
+  flex-direction: column;
 }
 
 .mainBody h2 {
@@ -43,15 +59,21 @@
 
 .postCardContainer {
   margin: .5em 0;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.linkCards {
+  text-decoration: none;
 }
 
 .postCards {
-  margin: 0.5em 0;
+  margin: 0.5em 1.5em;
   padding: 1em;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; 
   transition: transform 0.3s ease-in-out;
+  display: flex;
 }
 
 .postCards h2 {
@@ -61,22 +83,30 @@
 
 .postCards p {
   text-align: center;
+  display: none;
 }
 
 .postCards img {
-  width: 100%;
+  width: 40vw;
+  height: auto;
   border-radius: 4px;
   transition: box-shadow 0.3s;
 }
 
-.postCards img:active,
-.postCards img:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+.postCards .latestCardNum {
+  display: flex;
+  flex-direction: row;
+  gap: .2em;
+  color: #181A18;
+  margin-top: 0;
 }
 
 .missionStatement {
   font-size: 1.8em;
   color: #525a52;
+  margin: 1em 24px;
+  text-align: center;
+  line-height: 1.5em;
 }
 
 .missionStatement a {
@@ -92,13 +122,47 @@
 }
 
 .featuredCards {
-  margin: 0.5em 0;
+  margin: 0.5em 1.5em;
   padding: 1em;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; 
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.featuredCardText{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.featuredCardText h2{
+  text-align: center;
+  font-size: 1.5em;
+  margin: 1em 0 0 0;
+}
+
+.featuredCards p {
+  display: none;
+}
+
+.featuredCards img{
+  width: 95%;
+  height: auto;
+  border-radius: 4px;
+}
+
+
+.featuredCards .latestCardNum {
+  display: flex;
+  flex-direction: row;
+  gap: .2em;
+  color: #181A18;
+  margin-top: 0;
+}
+
+
 
 @media screen and (min-width: 481px) {
   /* Adjustments for larger screens */
