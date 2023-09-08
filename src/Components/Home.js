@@ -5,7 +5,7 @@ import { FiMenu } from 'react-icons/fi';
 import './Home.css';
 import { subscribeEmail } from './api';
 
-const Home = (props) => {
+const Home = () => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [,setDropdownOpen] = useState(false)
