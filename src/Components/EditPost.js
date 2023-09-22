@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { updatePost } from './api';
-import Compressor from 'compressorjs';
 import TinyMCE from './TinyMCE';
 import './MakePost.css';
 
@@ -13,88 +12,83 @@ const EditPost = (props) => {
     const post = posts.find((post) => parseInt(id) === post.id);
 
     const [previewMode, setPreviewMode] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
     const [title, setTitle] = useState(post ? post.title : '');
-    const [imageData, setImageData] = useState(post ? post.image : null);
+    // const [imageData, setImageData] = useState(post ? post.image : null);
     const [editorHtml, setEditorHtml] = useState(post ? post.body : '');
     const [categoryId, setCategoryId] = useState(post ? post.categoryId : 0);
     const [isHeadline, setIsHeadline] = useState(post ? post.isHeadline : false);
 
+    console.log(post)
+
+    // const handleImageUpload = async (event) => {
+    //     const file = event.target.files[0];
+
+    //     setErrorMessage('');
+
+    //     // Check if the selected file is an image
+    //     if (file && file.type.startsWith('image/')) {
+    //         const targetMaxFileSize = 100 * 1024; // 500KB (adjust to your desired size)
+    //         let currentQuality = 0.7; // Starting quality value
+
+    //         // automatically compresses image if size is too large
+    //         const compressImage = () => {
+    //             if (currentQuality < 0.1) {
+    //                 setErrorMessage('Image too large, select a new one'); // Set an error message
+    //                 return;
+    //             }
+
+    //             new Compressor(file, {
+    //                 quality: currentQuality,
+    //                 maxWidth: 700,
+    //                 maxHeight: 700,
+    //                 success(compressedResult) {
+    //                     const compressedSize = compressedResult.size;
+
+    //                     if (compressedSize <= targetMaxFileSize) {
+    //                         const reader = new FileReader();
+
+    //                         reader.readAsDataURL(compressedResult);
+    //                         reader.onload = (e) => {
+    //                             setImageData(e.target.result);
+    //                         };
+    //                     } else {
+    //                         // Reduce quality and try again
+    //                         currentQuality -= 0.1; // Decrease quality
+    //                         compressImage();
+    //                     }
+    //                 },
+    //                 error(err) {
+    //                     console.error(err.message);
+    //                 },
+    //             });
+    //         };
+
+    //         compressImage();
+    //     } else {
+    //         setErrorMessage('Invalid file format, please select an image.');
+    //     }
+    // };
 
 
-    const handleImageUpload = async (event) => {
-        const file = event.target.files[0];
-
-        setErrorMessage('');
-
-        // Check if the selected file is an image
-        if (file && file.type.startsWith('image/')) {
-            const targetMaxFileSize = 100 * 1024; // 500KB (adjust to your desired size)
-            let currentQuality = 0.7; // Starting quality value
-
-            // automatically compresses image if size is too large
-            const compressImage = () => {
-                if (currentQuality < 0.1) {
-                    setErrorMessage('Image too large, select a new one'); // Set an error message
-                    return;
-                }
-
-                new Compressor(file, {
-                    quality: currentQuality,
-                    maxWidth: 700,
-                    maxHeight: 700,
-                    success(compressedResult) {
-                        const compressedSize = compressedResult.size;
-
-                        if (compressedSize <= targetMaxFileSize) {
-                            const reader = new FileReader();
-
-                            reader.readAsDataURL(compressedResult);
-                            reader.onload = (e) => {
-                                setImageData(e.target.result);
-                            };
-                        } else {
-                            // Reduce quality and try again
-                            currentQuality -= 0.1; // Decrease quality
-                            compressImage();
-                        }
-                    },
-                    error(err) {
-                        console.error(err.message);
-                    },
-                });
-            };
-
-            compressImage();
-        } else {
-            setErrorMessage('Invalid file format, please select an image.');
-        }
-    };
-
-
-    //handle submission of new posts
     const handleEdit = async (event) => {
         event.preventDefault();
 
         const updatedPostData = {
-            postId: post.id, // Include the postId for the specific post you want to update
+            postId: post.id,
             title,
             body: editorHtml,
-            image: imageData,
             categoryId,
             isHeadline,
         };
 
 
         try {
-            // Send a PUT request to update the post
             const response = await updatePost(updatedPostData, token);
 
             return response;
-            // Optionally, you can redirect the user to the updated post or display a success message
         } catch (error) {
             console.error(error);
-            // Handle error scenarios, e.g., display an error message to the user
         }
     };
 
@@ -116,7 +110,7 @@ const EditPost = (props) => {
             <div className="preview">
                 <h1>{title}</h1>
                 <h3>Nicole Bondurant</h3>
-                <img src={imageData} alt="placeholder" />
+                <img src={"https://placehold.co/600x400"} alt="placeholder" />
                 <div dangerouslySetInnerHTML={{ __html: editorHtml }}></div>
             </div>
         );
@@ -136,7 +130,7 @@ const EditPost = (props) => {
                                 onChange={(e) => setTitle(e.target.value)}
                             />
                         </label>
-                        <label className="formInput">
+                        {/* <label className="formInput">
                             Photo
                             <p>*Leave blank to keep image</p>
                             <input
@@ -148,7 +142,7 @@ const EditPost = (props) => {
                         </label>
                         <div className="errorContainer">
                             {errorMessage && <p className="errorMessage">{errorMessage}</p>}
-                        </div>
+                        </div> */}
 
                         <label className="formInput">
                             Body
@@ -185,7 +179,7 @@ const EditPost = (props) => {
                                 onChange={(e) => setIsHeadline(e.target.checked)}
                             />
                         </label>
-                        <button className='submitButton' type="submit">Create Post</button>
+                        <button className='submitButton' type="submit">Edit Post</button>
                     </form>
                     {previewMode ? (
                         <>

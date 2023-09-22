@@ -146,8 +146,12 @@ const Home = () => {
                 Contact
               </NavLink>
               <SubscribeForm />
+
             </div>
+              
           </li>
+          <img src="../images/Auburn.png" className="homeLogo" alt="logo" />
+
         </ul>
       </nav>
     </div>

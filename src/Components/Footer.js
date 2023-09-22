@@ -86,7 +86,7 @@ const Footer = (props) => {
                     <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img className="devLinks" alt="linkedIn" src="../images/LI-In-Bug.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
+                    <a target="_blank" rel="noreferrer" href={"https://linktr.ee/gebhardcole"}>
                         <img className="devLinks" alt="beerMe" src="../images/Daco_4674844.png" />
                     </a>
                 </span>

@@ -45,6 +45,8 @@ const SinglePost = (props) => {
     return shuffledArray.slice(0, count);
   };
 
+  console.log(post)
+
   const randomPosts = getRandomIndices(posts, 3, post)
 
   return post ? (
@@ -58,14 +60,33 @@ const SinglePost = (props) => {
             "base64"
           )}`}
         />
-        <span className="numberText">
-          <h6>{formatDate(post.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6>
-          <h6> {calculateReadTime(post.body)} min read</h6>
-        </span>
-        <Link className="linkToBio" to="/about" onClick={scrollToTop}>
-          <h3>Nicole Bondurant</h3>
-        </Link>
-        {/* Display the paragraph content without rendering HTML tags */}
+        <div className="horizontalRule" />
+        <div className="singlePostDetails">
+
+          <span className="singlePostDetailSpan">
+            <h5>Published:</h5>
+            <h6>{formatDate(post.date_created)}</h6>
+          </span>
+
+          <span className="singlePostDetailSpan">
+            <h5>Read Time:</h5>
+            <h6> {calculateReadTime(post.body)} min read</h6>
+          </span>
+
+          <span className="singlePostDetailSpan">
+            <h5>Author:</h5>
+            <Link className="linkToBio" to="/about" onClick={scrollToTop}>
+              <h6>Nicole Bondurant</h6>
+            </Link>
+          </span>
+
+          <span className="singlePostDetailSpan">
+            <h5>Topic:</h5>
+            <h6>{post.category_name}</h6>
+          </span>
+
+
+        </div>
         <div className="mainBodySingle" dangerouslySetInnerHTML={{ __html: post.body }} />
       </div>
       <span className="readNext">

@@ -67,3 +67,10 @@
     margin: .5em;
     position: relative;
 }
+
+.allAdminPost h3 {
+    text-align: center;
+    font-size: 1em;
+    /* width: 75%; */
+    margin: 1em;
+}

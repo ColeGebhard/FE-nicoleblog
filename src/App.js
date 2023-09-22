@@ -26,6 +26,10 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([])
 
+  const isDataLoaded = () => {
+    return posts.length > 0 && categories.length > 0 && me !== '' && !loading;
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -33,34 +37,26 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 0); // Simulate a 1-second loading time
-  }, []);
+    }, 1000); // Simulate a 1-second loading time
 
-  useEffect(() => {
-    getAllCategories()
-      .then((categories) => {
-        setCategories(categories);
+    // Fetch data inside this useEffect
+    Promise.all([getAllPosts(), getAllCategories()])
+      .then(([fetchedPosts, fetchedCategories]) => {
+        setPosts(fetchedPosts);
+        setCategories(fetchedCategories);
+        setLoading(false); // Mark loading as complete
       })
       .catch((e) => {
-        console.error('Failed to load Posts');
+        console.error('Failed to load data:', e);
+        setLoading(false); // Mark loading as complete even on error
       });
-  }, []);
-
-  useEffect(() => {
-    getAllPosts()
-      .then((posts) => {
-        setPosts(posts);
-      })
-      .catch((e) => {
-        console.error('Failed to load Posts');
-      });
-  }, []);
+  }, [token]); // Include 'token' in the dependency array
 
   useEffect(() => {
     if (token) {
       isUser(token)
-        .then((me) => {
-          setMe(me);
+        .then((fetchedMe) => {
+          setMe(fetchedMe);
         })
         .catch((e) => {
           throw new Error(`Failed to fetch myself.`);
@@ -68,7 +64,7 @@ function App() {
     }
   }, [token]);
 
-  return loading ? (
+  return loading && !isDataLoaded() ? (
     <span className="loader">
       <span className="loader-inner">
       </span>

@@ -16,7 +16,7 @@
     opacity: 1;
     transition: transform 0.5s, opacity 0.5s;
     overflow-x: hidden;
-    
+    padding: 1.5em 0em;
 }
 
 
@@ -36,13 +36,13 @@
 .mainTitle {
     margin: 0;
     font-weight: 500;
-    padding-left: 1em;
     color: #2c3d10;
-    font-size: 3em;
     z-index: 1;
     text-decoration: none;
     font-family: 'Merriweather', serif;
     font-weight: 500;
+    font-size: 2.2em;
+    padding-left: .5em;
 }
 
 button.toggle {
@@ -108,7 +108,9 @@ button.toggle {
     z-index: 1;
     transform-origin: right center;
     overflow: hidden;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -132,20 +134,21 @@ button.toggle {
 .navLinksOpen {
     display: flex;
     flex-direction: column;
-    margin-top: 8em;
-    padding-left: 6em;
     gap: 1em;
-    width: 50%;
     z-index: 1;
     transition: margin-top ease-in-out 0.5s;
     overflow: hidden;
+    margin-top: 6em;
+    padding-left: 2em;
+    gap: 2em;
+    width: 80%;
 }
 
 
 .navList {
     text-decoration: none;
     color: #d5e7b8;
-    font-size: 3em;
+    font-size: 2.7em;
     position: relative;
     z-index: 1;
 }
@@ -166,7 +169,80 @@ button.toggle {
     width: 7em
 }
 
-@media screen and (max-width: 481px) {
+.homeLogo{
+    border-radius: 50%;
+    background-color: #d5e7b8;
+    /* padding: 10px; */
+    width: 10em;
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2em;
+}
+
+.emailForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 20em;
+    z-index: 100;
+  }
+  
+  .emailInput {
+    width: 100%;
+    border: 1px solid #d5e7b8;
+    background-color: #d5e7b8;
+    margin-left: 0;
+    height: 38px;
+    padding: 1em; /* Reset padding */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .subscribeButton {
+    background-color: #d5e7b8;
+    color: #2c3d10;
+    border: 1px solid #d5e7b8;
+    cursor: pointer;
+    height: 38px;
+    margin-right: 0;
+    padding: 0 1em;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .emailFormField {
+      font-size: 1em;
+      padding: 0.5em 0;
+      border-radius: 1em;
+      border: none;
+      margin: 0;
+  }
+  
+  label, input, button {
+      font-size: inherit;
+      padding: 0.2em;
+      margin: 0.1em 0.2em;
+      -moz-box-sizing: content-box; /* or `border-box` */
+      -webkit-box-sizing: content-box;
+      box-sizing: content-box;
+  }
+    
+  .description {
+      font-size: 1em;
+      z-index: 100;
+      margin-top: 0;
+      font-weight: 500;
+      color: #d5e7b8;
+  }
+  
+  .textSpan {
+      display: flex;
+      justify-content: space-between;
+  }
+
+@media screen and (min-width: 481px) {
     .navbar {
         padding: 1.5em 0em;
     }
@@ -178,20 +254,14 @@ button.toggle {
 
     .navLinksOpen {
         margin-top: 4em;
-        padding-left: 2em;
         gap: 2em;
-        width: 100%;
+        /* width: 100%; */
+    } 
+
+    @media screen and (min-width: 700px) {
     }
 
-    button {
-        font-size: 1.2em;
-    }
 
-    .navList {
-        font-size: 3em;
-    }
-
-    /* Adjust other styles as needed */
 }
 
 
@@ -225,62 +295,3 @@ body.no-scroll {
 
 
 /* SubscribeForm.css */
-.emailForm {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  max-width: 20em;
-  z-index: 100;
-}
-
-.emailInput {
-  width: 100%;
-  border: 1px solid #d5e7b8;
-  background-color: #d5e7b8;
-  margin-left: 0;
-  height: 38px;
-  padding: 1em; /* Reset padding */
-  box-sizing: border-box; /* Include padding in width calculation */
-}
-
-.subscribeButton {
-  background-color: #d5e7b8;
-  color: #2c3d10;
-  border: 1px solid #d5e7b8;
-  cursor: pointer;
-  height: 38px;
-  margin-right: 0;
-  padding: 0 1em;
-  box-sizing: border-box; /* Include padding in width calculation */
-}
-
-.emailFormField {
-    font-size: 1em;
-    padding: 0.5em 0;
-    border-radius: 1em;
-    border: none;
-    margin: 0;
-}
-
-label, input, button {
-    font-size: inherit;
-    padding: 0.2em;
-    margin: 0.1em 0.2em;
-    -moz-box-sizing: content-box; /* or `border-box` */
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-}
-  
-.description {
-    font-size: 1em;
-    z-index: 100;
-    margin-top: 0;
-    font-weight: 500;
-    color: #d5e7b8;
-}
-
-.textSpan {
-    display: flex;
-    justify-content: space-between;
-}

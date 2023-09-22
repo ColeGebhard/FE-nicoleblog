@@ -79,6 +79,7 @@ footer{
 .devLinksParent {
     display: flex;
     justify-content: space-around;
+    font-size: 1.2em;
 }
 
 .devLinks{
@@ -95,14 +96,16 @@ footer{
     color: #090a09;
     background-color: #48641b;
     margin: 0;
+    
 }
 
 .devBio h4{
     margin-bottom: .8em;
+    font-size: .8em;
 }
 
 @media (min-width: 768px) {
-    /* Your CSS rules for tablet-sized screens and larger */
+    /* CSS rules for tablet-sized screens and larger */
     .mainContent{
         flex-direction: row;
         flex-wrap: wrap;

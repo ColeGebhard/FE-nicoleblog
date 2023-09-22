@@ -2,12 +2,18 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    animation: transitionIn 0.75s;
+
+}
+
+.singlePost .horizontalRule{
+  align-self: center;
 }
 
 .singlePost h1 {
     text-align: center;
     color: #181A18;
-    width: 95vw;
+    width: 90vw;
     font-size: 1.7em;
     overflow-x: hidden;
 }
@@ -16,14 +22,49 @@
     width: 90vw;
     height: auto;
     border-radius: 2px;
+    margin-bottom: 1em;
 }
 
+
+.singlePostDetails{
+  display: flex;
+  margin: 0 1.5em;
+  flex-direction: column;
+}
+
+.singlePostDetailSpan {
+  display: flex;
+  width: 90vw;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px -6px #6e6a6a;
+  padding-bottom: .5em;
+}
+
+.singlePostDetailSpan h5{
+  margin: 0;
+  font-size: 1em;
+  margin-top: 1em;
+  font-weight: 500;
+}
+
+.singlePostDetailSpan a h6{
+
+}
+
+.singlePostDetailSpan h6{
+  margin: 0;
+  font-size: .9em;
+  margin-top: 1em;
+  font-weight: 500;
+}
 
 .mainBodySingle{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0 1.5em;
+    margin: 2em 1.5em;
+    width: 90vw;
     gap: 1em;
 }
 
@@ -31,9 +72,7 @@
     margin: 0;
   }
 
-.singlePost h6{
-    margin: 2em 0 0 0;
-}
+
 
 .nextArticle {
     display: flex;
@@ -42,10 +81,16 @@
     
   }
 
+  .readNext{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .readNext h2{
     color: #181A18;
-    margin-left: 1em;
-    
+    width: 90vw;
+
   }
 
   .randomPostCard {
@@ -54,12 +99,19 @@
     margin: 1em 1.5em;
     padding: 1em;
     text-decoration: none;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;  }
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: 85vw;
+    }
   
   #randomPost {
     width: 100%; /* Make sure the image fills the card width */
     height: auto; /* Allow the image to adjust its height proportionally */
     border-radius: 5px;
+  }
+
+  .randomPostCard h4{
+    text-decoration: none !important; /* Add !important to override any existing styles */
+    color: #181A18;
   }
 
   .numberText {
@@ -68,9 +120,22 @@
     gap: .2em;
     color: #181A18;
 }
-
-  .randomPostCard h4{
-    text-decoration: none !important; /* Add !important to override any existing styles */
-    color: #181A18;
+  .fade-in {
+    animation: transitionIn 0.75s;
   }
   
+  .mainBody {
+    animation: transitionIn 0.75s;
+  }
+  
+  @keyframes transitionIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

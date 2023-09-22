@@ -78,8 +78,8 @@ export async function createPost({
         image,
         date_created,
         userId,
-        categoryId, // Include categoryId
-        isHeadline, // Include isHeadline
+        categoryId,
+        isHeadline, 
       })
     });
     const data = await response.json();
@@ -127,7 +127,7 @@ export async function getAllCategories() {
 
     return data;
   } catch (error) {
-    throw new Error("Could not get categories", error); // Re-throw the error to be handled by the caller
+    throw new Error("Could not get categories", error); 
   }
 }
 

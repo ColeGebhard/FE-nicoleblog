@@ -29,7 +29,7 @@ const Admin = (props) => {
 
 
     }
-    
+
     return (
         <form onSubmit={handleSaveChanges} className="adminPage">
             <h1>Admin Privlages</h1>
@@ -62,7 +62,7 @@ const Admin = (props) => {
             <h2>All posts</h2>
             <div className="allAdminPostCards">
                 {sortedPosts.map((post) => (
-                    <div className="allAdminCard">
+                    <div key={post.id}className="allAdminCard">
                     <span key={post.id} className="allAdminPost">
                         <button id="deleteButton">
                             <img
@@ -73,7 +73,7 @@ const Admin = (props) => {
                         <Link to={`/post/${post.id}`}>
                             <h3>{post.title}</h3>
                         </Link>
-                        <Link to={`/editpost/${headlinePost.id}`} id="editButton">
+                        <Link to={`/editpost/${post.id}`} id="editButton">
                             <img
                                 src="../images/EditIcon.png"
                                 alt="edit"
