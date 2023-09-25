@@ -8,6 +8,10 @@ footer{
     margin: 0;
 }
 
+#emailFormFooter{
+    z-index: 1;
+}
+
 .mainContent {
     height: 100%;
     display: flex;

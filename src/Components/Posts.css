@@ -28,6 +28,7 @@
 .headline img {
   width: 88vw;
   max-width: 40em;
+  aspect-ratio: 4/3;
 }
 
 .headline h3 {
@@ -225,10 +226,8 @@
     }
 
     .headerContent img{
-      width: 30em;
+      width: 35em;
     }
-
-
 
   }
 }

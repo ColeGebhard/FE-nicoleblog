@@ -11,6 +11,8 @@ import {
   Admin,
   EditPost
 } from './Components/index.js';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer} from 'react-notifications';
 import { getAllPosts, isUser, getAllCategories } from './Components/api.js';
 import './App.css';
 
@@ -91,6 +93,7 @@ function App() {
       </Routes>
 
       <Footer />
+      <NotificationContainer />
     </div>
   );
 }

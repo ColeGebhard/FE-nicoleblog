@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { subscribeEmail } from './api';
+import { NotificationManager } from "react-notifications";
+import 'react-notifications/lib/notifications.css';
 import './Footer.css';
-
-
 
 const Footer = (props) => {
 
@@ -16,10 +16,12 @@ const Footer = (props) => {
                 const subEmail = await subscribeEmail({ email });
 
                 if (subEmail.error) {
+                    NotificationManager.error("Failed to Subscribe", 'Email already used')
                     window.alert('Subscribe fail');
                 } else {
                     setEmail("")
-                    window.alert('Subscribe success');
+                    NotificationManager.success('Thanks for subscribing', 'Succesfully Joined!');
+                    // window.alert('Subscribe success');
                 }
             } catch (e) {
                 console.error('Failed to subscribe', e);
@@ -27,7 +29,7 @@ const Footer = (props) => {
         };
 
         return (
-            <form className='emailForm' onSubmit={handleSubmit}>
+            <form className='emailForm' id="emailFormFooter"onSubmit={handleSubmit}>
                 <fieldset className='emailFormField'>
                     <p className='description'>Join us to get updates on new readings</p>
                     <span className='textSpan'>

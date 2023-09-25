@@ -4,6 +4,7 @@
     align-items: center;
     margin-top: 3em;
     color: #181A18;
+    /* animation: transitionIn 0.25s; */
   }
   
   .aboutPage img {
@@ -49,7 +50,7 @@
       width: 40vw;
       margin: 0;
       /* margin-right: 1em; */
-      animation-delay: 0s;
+      animation-delay: 0.5s;
       font-size: 1.6em;
     }
 
@@ -64,9 +65,28 @@
     }
 
     @media screen and (min-width: 1024px) {
+      .aboutPage{
+        /* justify-content: space-between; */
+      }
+      
       .aboutPage h1{
         font-size: 3em;
         margin-left: .5em;
+      }
+
+      .aboutPage img {
+        max-width: 40vw;
+      }
+
+      @media screen and (min-width: 1350px) {
+        .aboutPage h1{
+          font-size: 3.5em;
+          margin-left: .5em;
+        }
+
+        .aboutPage img {
+          max-width: 35vw;
+        }
       }
   }
   
