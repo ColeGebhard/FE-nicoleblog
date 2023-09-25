@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:8000/api"
+// const BASE_URL = "http://localhost:8000/api"
+const BASE_URL = "https://auborn-activist.onrender.com/api"
 
 export async function getAllPosts() {
   try {
