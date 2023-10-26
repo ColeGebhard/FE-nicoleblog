@@ -11,7 +11,7 @@ const AllPosts = (props) => {
     const [sortedPosts, setSortedPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10; // Define the number of posts per page
-
+    console.log('hello world')
 
     const formatDate = (dateString) => {
         const dateObj = new Date(dateString);
