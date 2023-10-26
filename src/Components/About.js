@@ -3,22 +3,29 @@ import './About.css';
 
 
 
-const About = (props) => {
-    
-    return(
+const About = () => {
+
+    return (
         <div className="aboutPage">
-                <img src="../images/nicolesImg.JPG" alt="portrait" />
-                <h1>Environmentalist, <br/>
-                Animal Welfare, <br/>
+            <img src="../images/nicolesImg.JPG" alt="portrait" />
+            <h1>Environmentalist, <br />
+                Animal Welfare, <br />
                 Climate Activist.</h1>
-                <span className="paragraphText">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras commodo ipsum ac pretium porttitor. Suspendisse rutrum lorem quis elit luctus lacinia. Praesent pulvinar ultricies quam ut blandit. Nulla sollicitudin ipsum a nulla porta fringilla. Etiam tristique est a fermentum sagittis. Nam fermentum, nulla a tempor mollis, nunc arcu condimentum purus, a auctor libero lorem at libero. Ut vitae arcu maximus nibh convallis suscipit. Integer vitae pulvinar ligula. Mauris fringilla, mauris sed aliquet cursus, massa dolor pulvinar metus, in dignissim metus libero eu leo. Nunc nunc mi, porttitor sit amet imperdiet vel, feugiat sit amet quam. Duis vitae odio suscipit, elementum nulla sit amet, egestas sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec dapibus molestie nisi ac porta.</p>
-                <p>Praesent varius vulputate mauris et maximus. Vestibulum ut ex leo. Nam a massa odio. Nullam sit amet condimentum massa. Donec commodo dictum aliquam. Sed convallis et nunc a eleifend. Pellentesque neque risus, porta eget libero pretium, gravida eleifend velit. Duis vulputate nisl orci, vitae blandit magna rutrum ac. Donec id malesuada ipsum, at varius erat. Mauris et ex maximus, convallis libero vitae, tincidunt enim. Suspendisse nec urna eu tortor pretium luctus sed nec massa.</p>
-                <p>Aliquam faucibus consequat scelerisque. In auctor hendrerit leo quis pretium. Donec suscipit laoreet massa et efficitur. In a fermentum elit. Nulla nec imperdiet dolor. Nunc facilisis pellentesque velit id hendrerit. Suspendisse nec blandit dui. Aliquam nec aliquet mi.</p>
-                </span>
+            <span className="paragraphText">
+                <p>Hello! I’m Nicole Bondurant, a dynamic professional residing in Englewood, CO, with a passion for policy analysis, grant writing, and campaigning, specifically in the fields of climate and animal welfare activism. I’m recognized for my commitment to innovation and my ability to adapt to diverse environments, driven by a profound desire to make a meaningful impact as an environmentalist.</p>
+
+                <p>I’ve acquired substantial experience in both academia and the non-profit sectors, contributing individually and as part of dynamic teams to drive organizational objectives. Whether conducting extensive research, crafting engaging digital newsletters, or generating actionable data reports, my efforts have always been geared towards fostering informed decision-making and strategic planning. I've worked in varied roles, such as Campaigns Intern at Mercy for Animals to being the President of the Annual Climate Conference at Montana State University.</p>
+
+                <p>Educationally, I hold a Bachelor of Arts in Environmental Studies with a minor in Political Science from Montana State University and a Graduate Certificate in High-Impact Grant Writing from DePaul University. My competencies include research and organization strategies, data analysis and visualization, public policy, grant writing, and technical and scientific writing.</p>
+
+                <p>Outside of my professional and academic pursuits, I’m an avid lover of the great outdoors, enjoying activities like skiing, snowboarding, hiking, and paddle boarding, alongside my wonderful fiancé, Cole Gebhard. Together, we share our lives with our two amazing dogs, our best companions, reveling in every moment we spend in the beauty of nature.</p>
+
+                <p>I’m thrilled to continue my journey as a fervent climate activist, animal welfare advocate, and environmentalist, striving to create a world where the symbiotic relationship between humanity and nature is cherished and protected.</p>
+
+            </span>
         </div>
     )
-    
+
 }
 
 export default About;

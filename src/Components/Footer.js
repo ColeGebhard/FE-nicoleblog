@@ -60,9 +60,9 @@ const Footer = (props) => {
                 <div className="donationParent">
                     <span className="donationText">
                         <h2>Take Action</h2>
-                        <p>At Auburn Activist, I like to use <br/>my outreach as a source
-                            to <br/>spread organizations I am fond <br/>of. Click the link to help assist<br/>
-                            the World Wildlife Fund <br/>and their mission.
+                        <p>At Auburn Activist, I like to use my outreach as a source
+                            to spread organizations I am fond of. Click the link to help assist
+                            the World Wildlife Fund and their mission.
                         </p>
                     </span>
                     <span className="quickLinks">

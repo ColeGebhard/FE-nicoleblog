@@ -109,7 +109,7 @@ const Posts = (props) => {
                 </div>
                 <div className="horizontalRule" />
                 <h3 className="missionStatement">
-                    At Auburn Activist, I compile topics based on <Link>Conservation</Link>, <Link>Climate Justice</Link>, <Link>Activism</Link>, and <Link>Progressive Solutions</Link>. <br /><Link>All Topics</Link>.
+                    At Auburn Activist, I compile topics based on <Link>Conservation</Link>, <Link>Climate Justice</Link>, <Link>Activism</Link>, and <Link>Progressive Solutions</Link>. <br /><Link to={`/posts`}>All Topics</Link>.
                 </h3>
                 {/* <div className="horizontalRule" />
                 <h2>Featured</h2>

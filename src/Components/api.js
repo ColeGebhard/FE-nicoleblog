@@ -132,6 +132,41 @@ export async function getAllCategories() {
   }
 }
 
+export async function getCategoryById(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/categories/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+
+    return data;
+  } catch (e){
+    throw new Error('Failed to get category by id')
+  }
+}
+
+//Get posts by CateogryID
+export async function getPostsByCategoryId(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/category/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+
+    return data;
+  } catch (e){
+    throw new Error('Failed to get posts by id')
+  }
+}
+
 export async function updatePost(updatedPostData, token) {
   try {
     const response = await fetch(`${BASE_URL}/posts/${updatedPostData.postId}`, {

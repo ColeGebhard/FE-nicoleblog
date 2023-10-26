@@ -31,6 +31,7 @@ const SinglePost = (props) => {
       top: 0,
       behavior: "smooth",
     });
+    
   };
 
   const getRandomIndices = (array, count, currentPost) => {
@@ -51,7 +52,7 @@ const SinglePost = (props) => {
 
   return post ? (
     <>
-      <div className="singlePost">
+      <div className={"singlePost fade-in"}>
         <h1>{post.title}</h1>
         <img
           id="postImage"
@@ -97,7 +98,7 @@ const SinglePost = (props) => {
         <span className="nextArticle">
 
           {randomPosts.map((randomPost) => (
-            <Link className="randomPostCard" key={randomPost.id} to={`/post/${randomPost.id}`}>
+            <Link className="randomPostCard" key={randomPost.id} to={`/post/${randomPost.id}`} onClick={scrollToTop}>
               <img
                 id="randomPost"
                 alt={randomPost.title}

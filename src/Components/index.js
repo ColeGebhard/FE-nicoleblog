@@ -7,6 +7,9 @@ export { default as About } from "./About";
 export { default as Footer } from "./Footer";
 export { default as Admin } from "./Admin"
 export { default as EditPost } from "./EditPost"
+export { default as AllPosts } from "./AllPosts"
+export { default as Category } from "./Category"
+
 
 
 

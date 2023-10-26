@@ -1,0 +1,41 @@
+.allPosts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.allPosts .header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.allPosts .categorySpan{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vw;
+}
+
+.allPosts .categoryCard{
+    flex: 1 0 40%; 
+    text-align: center;
+    margin: 5px;
+    background-color: #567721;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #181A18;
+    text-decoration: none;
+}
+
+.allPosts .categoryCard:hover{
+    background-color: #8eaa61;
+    color: #303530;
+}
+
+.allPosts .categoryCard h3{
+    margin: 0;
+    padding: 0;
+}

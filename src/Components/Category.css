@@ -1,0 +1,25 @@
+.categoryPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headerElement {
+    width: 95vw;
+    padding: 1em;
+}
+
+.backArrow {
+    display: flex;
+    align-items: center;
+    /* position: absolute; */
+    width: 40px;
+}
+
+.headerElement h1 {
+    margin: 0; /* Remove any default margin */
+    text-align: center;
+    margin-top: .5em;
+}
+
+

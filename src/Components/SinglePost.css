@@ -23,6 +23,9 @@
     height: auto;
     border-radius: 2px;
     margin-bottom: 1em;
+    aspect-ratio: 4/3;
+    max-width: 40em;
+
 }
 
 
@@ -66,6 +69,7 @@
     margin: 2em 1.5em;
     width: 90vw;
     gap: 1em;
+    font-size: 1.2em;
 }
 
 .mainBodySingle > * {
@@ -127,6 +131,13 @@
   .mainBody {
     animation: transitionIn 0.75s;
   }
+
+  @media screen and (min-width: 700px) {
+    .singlePost h1{
+      font-size: 2.5em;
+    }
+  }
+
   
   @keyframes transitionIn {
     from {

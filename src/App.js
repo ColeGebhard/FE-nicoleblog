@@ -9,12 +9,14 @@ import {
   MakePost,
   Footer,
   Admin,
-  EditPost
+  EditPost,
+  Category
 } from './Components/index.js';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from 'react-notifications';
 import { getAllPosts, isUser, getAllCategories } from './Components/api.js';
 import './App.css';
+import AllPosts from './Components/AllPosts.js';
 
 
 export const TOKEN_STORAGE_KEY = 'user-token';
@@ -90,6 +92,8 @@ function App() {
         <Route path="editpost/:id" element={<EditPost posts={posts} me={me} categories={categories} token={token} />} />
         <Route path="/about" element={<About />} />
         <Route path="/adminfeatures" element={<Admin posts={posts} me={me} categories={categories} />} />
+        <Route path='/posts' element={<AllPosts posts={posts} categories={categories}/>}/>
+        <Route path='/posts/:categoryId' element={<Category posts={posts} categories={categories}/>}/>
       </Routes>
 
       <Footer />
