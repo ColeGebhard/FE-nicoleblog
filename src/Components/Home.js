@@ -8,7 +8,7 @@ import { subscribeEmail } from './api';
 const Home = () => {
 
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [,setDropdownOpen] = useState(false)
+  const [, setDropdownOpen] = useState(false)
 
   const menuRef = useRef();
 
@@ -126,7 +126,14 @@ const Home = () => {
             <div className="navLinksOpen">
               <NavLink
                 className="navList"
-                to={'#'}
+                to={'/'}
+                onClick={() => setNavbarOpen(false)}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                className="navList"
+                to={'/posts'}
                 onClick={() => setNavbarOpen(false)}
               >
                 What's new
@@ -140,7 +147,7 @@ const Home = () => {
               </NavLink>
               <NavLink
                 className="navList"
-                to={'#'}
+                to={'/contact'}
                 onClick={() => setNavbarOpen(false)}
               >
                 Contact
@@ -148,7 +155,7 @@ const Home = () => {
               <SubscribeForm />
 
             </div>
-              
+
           </li>
           <img src="../images/Auburn.png" className="homeLogo" alt="logo" />
 

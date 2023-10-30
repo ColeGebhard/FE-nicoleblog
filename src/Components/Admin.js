@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Buffer } from "buffer";
+import { deletePost } from "./api";
 import './Admin.css';
 
 
@@ -8,6 +9,7 @@ import './Admin.css';
 const Admin = (props) => {
     const {
         posts,
+        token
     } = props;
 
     // const [isFeatured, setIsFeatured] = useState(false);
@@ -26,9 +28,25 @@ const Admin = (props) => {
 
     const handleSaveChanges = async (event) => {
         event.preventDefault();
-
-
     }
+
+    const handleDelete = async (postId, title) => {
+        console.log(title)
+        const confirmed = window.confirm(`Are you sure you want to delete ${title}?`);
+
+        console.log(postId)
+        if (confirmed) {
+          try {
+            const response = await deletePost(postId, token );
+
+            console.log(response)
+            window.location.reload();
+        } catch (error) {
+            console.error('Failed to delete the post:', error);
+          }
+        }
+      };
+      
 
     return (
         <form onSubmit={handleSaveChanges} className="adminPage">
@@ -45,7 +63,7 @@ const Admin = (props) => {
                     alt={headlinePost.title}
                     src={`data:image/jpeg;base64,${Buffer.from(headlinePost.image.data).toString("base64")}`}
                 />
-                <button id="deleteButton">
+                <button onClick={() => handleDelete(headlinePost.id, headlinePost.title)} id="deleteButton">
                     <img
                         src="../images/DeleteIcon.svg"
                         alt="edit"
@@ -64,7 +82,7 @@ const Admin = (props) => {
                 {sortedPosts.map((post) => (
                     <div key={post.id}className="allAdminCard">
                     <span key={post.id} className="allAdminPost">
-                        <button id="deleteButton">
+                        <button onClick={() => handleDelete(post.id, post.title)} id="deleteButton">
                             <img
                                 src="../images/DeleteIcon.svg"
                                 alt="edit"

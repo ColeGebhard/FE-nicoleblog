@@ -22,4 +22,25 @@
     margin-top: .5em;
 }
 
+.categoryPage .categorySpan{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vw;
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.categoryPage .postCards {
+    color: #181A18;
+    border: dotted 0.15em transparent; /* Add a transparent border */
+    transition: color 0.3s, border-color 0.3s; /* Add a transition for the color and border-color */
+}
+
+.categoryPage .postCards:hover {
+    color: #525a52;
+    border-color: #2c3d10; /* Change the border color on hover */
+}
+
+
 

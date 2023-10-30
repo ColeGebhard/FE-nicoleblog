@@ -48,6 +48,7 @@
     background-color: transparent;
     margin: 0;
     padding: 2px;
+    cursor: pointer;
 }
 
 .allAdminPostCards{

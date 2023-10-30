@@ -15,27 +15,17 @@
     flex-wrap: wrap;
     justify-content: center;
     width: 90vw;
+    gap: 1.5em;
+    margin-top: 1em;
 }
 
-.allPosts .categoryCard{
-    flex: 1 0 40%; 
-    text-align: center;
-    margin: 5px;
-    background-color: #567721;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.allPosts .postCards {
     color: #181A18;
-    text-decoration: none;
+    border: dotted 0.15em transparent; /* Add a transparent border */
+    transition: color 0.3s, border-color 0.3s; /* Add a transition for the color and border-color */
 }
 
-.allPosts .categoryCard:hover{
-    background-color: #8eaa61;
-    color: #303530;
-}
-
-.allPosts .categoryCard h3{
-    margin: 0;
-    padding: 0;
+.allPosts .postCards:hover {
+    color: #525a52;
+    border-color: #2c3d10; /* Change the border color on hover */
 }

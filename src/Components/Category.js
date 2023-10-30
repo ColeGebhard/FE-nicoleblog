@@ -1,48 +1,31 @@
-import React, { useEffect, useState, Link } from "react";
+import React, { useEffect, useState } from "react";
 import './Category.css';
 import { getPostsByCategoryId, getCategoryById } from "./api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Buffer } from "buffer";
-
 import { useNavigate } from 'react-router-dom';
 import { MdArrowBack } from "react-icons/md";
 
 
 
-const Category = (props) => {
+const Categories = (props) => {
+
+    const { posts, categories } = props
     const navigate = useNavigate();
 
     const { categoryId } = useParams(); // Invoke useParams as a function
     const [isLoaded, setIsLoaded] = useState(false);
-    const [posts, setPosts] = useState([]); // Initialize a state to store the fetched posts
-    const [category, setCategory] = useState('')
 
-    useEffect(() => {
-        // Fetch posts by category ID and update the state
-        getPostsByCategoryId(categoryId)
-            .then((response) => {
-                setPosts(response);
-            })
-            .catch((error) => {
-                console.error("Error fetching posts:", error);
-            });
-    }, [categoryId]);
-
-    useEffect(() => {
-        // Fetch posts by category ID and update the state
-        getCategoryById(categoryId)
-            .then((response) => {
-                setCategory(response);
-            })
-            .catch((error) => {
-                console.error("Error fetching category:", error);
-            });
-    }, [categoryId]);
 
     const [sortedPosts, setSortedPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10; // Define the number of posts per page
 
+    console.log(categories)
+
+    const category = categories.filter((category) => category.id === Number(categoryId))
+
+    console.log(category)
 
     const formatDate = (dateString) => {
         const dateObj = new Date(dateString);
@@ -63,13 +46,13 @@ const Category = (props) => {
 
     const sortPosts = () => {
         if (Array.isArray(posts) && posts.length > 0) {
-            const sorted = [...posts].sort((a, b) => {
+            const filteredPost = posts.filter((post) => post.categoryId === Number(categoryId))
+            const sorted = [...filteredPost].sort((a, b) => {
                 return new Date(b.date_created) - new Date(a.date_created);
             });
             setSortedPosts(sorted);
         }
     };
-    
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -124,14 +107,25 @@ const Category = (props) => {
     useEffect(() => {
         setIsLoaded(true);
     }, []);
+
     return (
         <div className={`categoryPage fade-in ${isLoaded ? "active" : ""}`} >
 
             <div className="headerElement">
-            <span className="backArrow" onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
-                <MdArrowBack size = '40'/>
-            </span>
-            <h1>{category.name}</h1>
+            <span
+            className="backArrow"
+            onClick={() => navigate(-1)}
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              margin: '.5em 0 0 0',
+            }}
+          >
+                    <MdArrowBack size='40' />
+                </span>
+                <h1>{category[0].name}</h1>
             </div>
 
             <select
@@ -143,31 +137,37 @@ const Category = (props) => {
                 <option value="alphabetical">Alphabetical</option>
             </select>
 
-            <div className="postsCards">
-                {Array.isArray(currentPosts) && currentPosts.length > 0 ? (
-                    currentPosts.map((post) => (
-                        <Link to={`/post/${post.id}`} key={post.id} className="linkCards">
-                            <div className={`postCards fade-in ${isLoaded ? "active" : ""}`} key={post.id}>
-                                <span className="latestCardsText">
-                                    <h2>{post.title}</h2>
-                                    <p>{post.body.replace(/(<([^>]+)>)/gi, '').split(' ').slice(0, 20).join(' ')}...</p>
-                                    <span className="latestCardNum">
-                                        <h6>{formatDate(post.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6>
-                                        <h6> {calculateReadTime(post.body)} min read</h6>
+            {isLoaded ? (
+                <div className="categorySpan">
+                    {Array.isArray(currentPosts) && currentPosts.length > 0 ? (
+                        currentPosts.map((post) => (
+                            <Link to={`/post/${post.id}`} key={post.id} className="linkCards">
+                                <div className={`postCards fade-in active`} key={post.id}>
+                                    <span className="latestCardsText">
+                                        <h2>{post.title}</h2>
+                                        <p>{post.body.replace(/(<([^>]+)>)/gi, '').split(' ').slice(0, 20).join(' ')}...</p>
+                                        <span className="latestCardNum">
+                                            <h6>{formatDate(post.date_created)} &nbsp; &#9679;&nbsp;&nbsp;</h6>
+                                            <h6> {calculateReadTime(post.body)} min read</h6>
+                                        </span>
                                     </span>
-                                </span>
-                                <img
-                                    id="postImage"
-                                    alt={post.title}
-                                    src={`data:image/jpeg;base64,${Buffer.from(post.image.data).toString("base64")}`}
-                                />
-                            </div>
-                        </Link>
-                    ))
-                ) : <h1>No Posts Yet! Subscribe to get updates for posts on {category.name}
-                    </h1>}
+                                    <img
+                                        id="postImage"
+                                        alt={post.title}
+                                        src={`data:image/jpeg;base64,${Buffer.from(post.image.data).toString("base64")}`}
+                                    />
+                                </div>
+                            </Link>
+                        ))
+                    ) : (
+                        // Render the "No Posts Yet" message only when there are no posts
+                        <div>No Posts Yet! Subscribe to get updates for posts on {category[0].name}</div>
 
-            </div>
+                    )}
+                </div>
+            ) : (
+                <div>Loading...</div>
+            )}
             <div className="pagination">
                 <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
                 <span>Page {currentPage} of {totalPages}</span>
@@ -177,4 +177,4 @@ const Category = (props) => {
     );
 }
 
-export default Category;
+export default Categories;

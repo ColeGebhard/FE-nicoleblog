@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { createPost } from './api';
 import Compressor from 'compressorjs';
 import TinyMCE from './TinyMCE';
+import { NotificationManager } from "react-notifications";
+import 'react-notifications/lib/notifications.css';
 import './MakePost.css';
 
 const MakePost = (props) => {
@@ -85,12 +87,23 @@ const MakePost = (props) => {
 
     try {
       const response = await createPost(postData);
+      if (response.error) {
+        NotificationManager.error("Failed to Create Post", `${response.error}`)
+    }  else {
+      setTitle("");
+      setImageData(null);
+      setEditorHtml("");
+      setCategoryId("");
+      setIsHeadline(false);
+      // Reset all state values to their initial empty state
+      NotificationManager.success('Blog made succesfully!', 'Reload to see changes');
+
       return response
+    }
     } catch (error) {
       console.error(error);
     }
   };
-
 
   const handlePreview = (event) => {
     event.preventDefault();

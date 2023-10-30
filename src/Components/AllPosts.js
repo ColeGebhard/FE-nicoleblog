@@ -124,7 +124,7 @@ const AllPosts = (props) => {
                 <option value="alphabetical">Alphabetical</option>
             </select>
 
-            <div className="postsCards">
+            <div className="categorySpan">
                 {Array.isArray(currentPosts) && currentPosts.length > 0 ? (
                     currentPosts.map((post) => (
                         <Link to={`/post/${post.id}`} key={post.id} className="linkCards">

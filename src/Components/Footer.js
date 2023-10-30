@@ -17,7 +17,6 @@ const Footer = (props) => {
 
                 if (subEmail.error) {
                     NotificationManager.error("Failed to Subscribe", 'Email already used')
-                    window.alert('Subscribe fail');
                 } else {
                     setEmail("")
                     NotificationManager.success('Thanks for subscribing', 'Succesfully Joined!');
@@ -67,7 +66,7 @@ const Footer = (props) => {
                     </span>
                     <span className="quickLinks">
                         <a target="_blank" rel="noreferrer" href={"https://protect.worldwildlife.org/page/52717/donate/1?en_og_source=Web_Donation&ea.tracking.id=Web_Topnav&supporter.appealCode=AWE2402OQ18299A01179RX&_gl=1*1y1vsue*_ga*MTU2MjYzOTM4MS4xNjkzMzQ5NzUy*_ga_FK6M9RK84Z*MTY5MzM0OTc1Mi4xLjAuMTY5MzM0OTc1NC41OC4wLjA.&_ga=2.196949676.1832874294.1693349752-1562639381.1693349752"}>
-                            <button className="charityDonation">Donate Now</button>
+                            <button type="submit" className="charityDonation">Donate Now</button>
                         </a>
                     </span>
                 </div>

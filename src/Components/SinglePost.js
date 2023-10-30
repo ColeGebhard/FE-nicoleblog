@@ -1,12 +1,15 @@
 import React from "react";
 import { Buffer } from "buffer";
 import { Link, useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { MdArrowBack } from "react-icons/md";
 import './SinglePost.css';
 
 const SinglePost = (props) => {
   const { posts } = props;
   const { id } = useParams();
   const post = posts.find((post) => parseInt(id) === post.id);
+  const navigate = useNavigate();
 
 
   const formatDate = (dateString) => {
@@ -31,7 +34,7 @@ const SinglePost = (props) => {
       top: 0,
       behavior: "smooth",
     });
-    
+
   };
 
   const getRandomIndices = (array, count, currentPost) => {
@@ -53,6 +56,23 @@ const SinglePost = (props) => {
   return post ? (
     <>
       <div className={"singlePost fade-in"}>
+        <div className="headerElement">
+          <span
+            className="backArrow"
+            onClick={() => navigate(-1)}
+            style={{
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              margin: '.5em 0 0 0',
+            }}
+          >
+            <span style={{ cursor: 'pointer' }}>
+              <MdArrowBack size='40' />
+            </span>
+          </span>
+        </div>
         <h1>{post.title}</h1>
         <img
           id="postImage"

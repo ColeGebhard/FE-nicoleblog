@@ -159,7 +159,7 @@ export async function getPostsByCategoryId(id) {
     });
 
     const data = await response.json();
-
+    console.log(data)
 
     return data;
   } catch (e){
@@ -196,3 +196,24 @@ export async function updatePost(updatedPostData, token) {
   }
 }
 
+export async function deletePost(postId, token) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete post.');
+    }
+
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Failed to delete post.');
+  }
+}

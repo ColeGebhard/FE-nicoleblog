@@ -86,6 +86,7 @@ const EditPost = (props) => {
         try {
             const response = await updatePost(updatedPostData, token);
 
+            console.log(response)
             return response;
         } catch (error) {
             console.error(error);

@@ -4,7 +4,7 @@ import './Posts.css';
 import { Link } from "react-router-dom";
 
 const Posts = (props) => {
-    const { posts } = props;
+    const { posts, categories } = props;
     const [isLoaded, setIsLoaded] = useState(false);
 
     const formatDate = (dateString) => {
@@ -109,7 +109,14 @@ const Posts = (props) => {
                 </div>
                 <div className="horizontalRule" />
                 <h3 className="missionStatement">
-                    At Auburn Activist, I compile topics based on <Link>Conservation</Link>, <Link>Climate Justice</Link>, <Link>Activism</Link>, and <Link>Progressive Solutions</Link>. <br /><Link to={`/posts`}>All Topics</Link>.
+                    Please choose a topic to explore posts on {categories.map((category, index) => (
+                        <React.Fragment key={category.id}>
+                            {index > 0 && index < categories.length - 1 ? ', ' : ''}
+                            {index === categories.length - 1 && index > 0 ? ' and ' : ''}
+                            <Link to={`${category.id}`}>{category.name}</Link>
+                        </React.Fragment>
+                    ))}.
+                     <br /><Link to={`/posts`}>All Topics</Link>.
                 </h3>
                 {/* <div className="horizontalRule" />
                 <h2>Featured</h2>

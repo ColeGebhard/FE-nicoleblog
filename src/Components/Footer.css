@@ -53,6 +53,7 @@ footer{
     border-radius: 2px;
     color: #d5e7b8;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .quickLinks{

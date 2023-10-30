@@ -10,7 +10,7 @@ import {
   Footer,
   Admin,
   EditPost,
-  Category
+  Categories
 } from './Components/index.js';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from 'react-notifications';
@@ -54,7 +54,7 @@ function App() {
         console.error('Failed to load data:', e);
         setLoading(false); // Mark loading as complete even on error
       });
-  }, [token]); // Include 'token' in the dependency array
+  }, []); // Include 'token' in the dependency array
 
   useEffect(() => {
     if (token) {
@@ -67,6 +67,8 @@ function App() {
         });
     }
   }, [token]);
+
+  console.log(posts)
 
   return loading && !isDataLoaded() ? (
     <span className="loader">
@@ -85,15 +87,15 @@ function App() {
       <Home me={me} />
 
       <Routes>
-        <Route path="/" element={<Posts posts={posts} />} />
+        <Route path="/" element={<Posts posts={posts} categories={categories} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/createPost" element={<MakePost posts={posts} me={me} categories={categories} token={token} />} />
         <Route path="post/:id" element={<SinglePost posts={posts} />} />
         <Route path="editpost/:id" element={<EditPost posts={posts} me={me} categories={categories} token={token} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/adminfeatures" element={<Admin posts={posts} me={me} categories={categories} />} />
+        <Route path="/adminfeatures" element={<Admin posts={posts} me={me} categories={categories} token={token} />} />
         <Route path='/posts' element={<AllPosts posts={posts} categories={categories}/>}/>
-        <Route path='/posts/:categoryId' element={<Category posts={posts} categories={categories}/>}/>
+        <Route path='/posts/:categoryId' element={<Categories posts={posts} categories={categories}/>}/>
       </Routes>
 
       <Footer />
