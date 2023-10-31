@@ -52,7 +52,6 @@
   font-weight: 500;
 }
 
-
 .singlePostDetailSpan h6{
   margin: 0;
   font-size: .9em;
@@ -80,7 +79,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    width:50em;
   }
 
   .readNext{
@@ -103,15 +102,15 @@
     text-decoration: none;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     width: 80vw;
+    max-width: 50em;
     align-items: center;
     }
   
   #randomPost {
-    width: 90%; /* Make sure the image fills the card width */
+    width: 90%;
     height: auto; /* Allow the image to adjust its height proportionally */
     border-radius: 5px;
-    aspect-ratio: 4/3;
-
+    max-height: 30em;
   }
   .randomPostCard h4{
     text-decoration: none !important; /* Add !important to override any existing styles */
@@ -136,6 +135,7 @@
     .singlePost h1{
       font-size: 2.5em;
     }
+    
   }
 
   

@@ -1,5 +1,8 @@
 // const BASE_URL = "http://localhost:8000/api"
-const BASE_URL = "https://auborn-activist.onrender.com/api"
+const BASE_URL = process.env.REACT_APP_API_KEY;
+
+console.log(BASE_URL)
+
 
 export async function getAllPosts() {
   try {
