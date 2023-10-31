@@ -15,6 +15,7 @@ const Footer = (props) => {
             try {
                 const subEmail = await subscribeEmail({ email });
 
+
                 if (subEmail.error) {
                     NotificationManager.error("Failed to Subscribe", 'Email already used')
                 } else {
@@ -81,10 +82,10 @@ const Footer = (props) => {
                     <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
                         <img className="devLinks" alt="gitHub" src="../images/github-mark.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
+                    <a target="_blank" rel="noreferrer" href={"https://cole-gebhard.onrender.com/"}>
                         <img id="personalPage" className="devLinks" alt="personalPage" src="../images/1174949_js_react js_logo_react_react native_icon.png" />
                     </a>
-                    <a target="_blank" rel="noreferrer" href={"https://github.com/ColeGebhard"}>
+                    <a target="_blank" rel="noreferrer" href={"https://www.linkedin.com/in/nicholas-gebhard/"}>
                         <img className="devLinks" alt="linkedIn" src="../images/LI-In-Bug.png" />
                     </a>
                     <a target="_blank" rel="noreferrer" href={"https://linktr.ee/gebhardcole"}>

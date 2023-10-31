@@ -111,6 +111,25 @@ export async function subscribeEmail({ email }) {
   }
 }
 
+export async function unsubscribeEmail({ email }) {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/unsubscribe`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email
+      })
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    throw new Error('Failed to make post.', error);
+  }
+}
+
 export async function getAllCategories() {
   try {
     const response = await fetch(`${BASE_URL}/categories`, {
@@ -159,7 +178,6 @@ export async function getPostsByCategoryId(id) {
     });
 
     const data = await response.json();
-    console.log(data)
 
     return data;
   } catch (e){

@@ -31,16 +31,14 @@ const Admin = (props) => {
     }
 
     const handleDelete = async (postId, title) => {
-        console.log(title)
         const confirmed = window.confirm(`Are you sure you want to delete ${title}?`);
 
-        console.log(postId)
         if (confirmed) {
           try {
             const response = await deletePost(postId, token );
-
-            console.log(response)
             window.location.reload();
+
+            return response
         } catch (error) {
             console.error('Failed to delete the post:', error);
           }

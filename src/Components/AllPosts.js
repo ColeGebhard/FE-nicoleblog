@@ -11,7 +11,6 @@ const AllPosts = (props) => {
     const [sortedPosts, setSortedPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10; // Define the number of posts per page
-    console.log('hello world')
 
     const formatDate = (dateString) => {
         const dateObj = new Date(dateString);
@@ -88,7 +87,7 @@ const AllPosts = (props) => {
 
     useEffect(() => {
         sortPosts(); // Sort the posts by "Most Recent" when the component mounts
-    }, []);
+    },);
 
 
 
@@ -96,7 +95,6 @@ const AllPosts = (props) => {
         setIsLoaded(true);
     }, []);
 
-    console.log(posts, categories)
     return (
         <div className={`allPosts fade-in ${isLoaded ? "active" : ""}`} >
             <div className="header">

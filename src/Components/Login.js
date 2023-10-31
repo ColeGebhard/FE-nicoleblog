@@ -23,7 +23,7 @@ const Login = (props) => {
         localStorage.removeItem(TOKEN_STORAGE_KEY);
         localStorage.setItem(TOKEN_STORAGE_KEY, result.token)
         setToken(result.token)
-        window.location.href = ('/')
+        window.location.href = ('/#/')
       } else if (!result) {
         setEmail("");
         setPassword("");

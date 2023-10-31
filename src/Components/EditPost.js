@@ -19,7 +19,6 @@ const EditPost = (props) => {
     const [categoryId, setCategoryId] = useState(post ? post.categoryId : 0);
     const [isHeadline, setIsHeadline] = useState(post ? post.isHeadline : false);
 
-    console.log(post)
 
     // const handleImageUpload = async (event) => {
     //     const file = event.target.files[0];
@@ -86,7 +85,6 @@ const EditPost = (props) => {
         try {
             const response = await updatePost(updatedPostData, token);
 
-            console.log(response)
             return response;
         } catch (error) {
             console.error(error);

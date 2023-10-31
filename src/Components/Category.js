@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import './Category.css';
-import { getPostsByCategoryId, getCategoryById } from "./api";
 import { useParams, Link } from "react-router-dom";
 import { Buffer } from "buffer";
 import { useNavigate } from 'react-router-dom';
@@ -21,11 +20,9 @@ const Categories = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
     const postsPerPage = 10; // Define the number of posts per page
 
-    console.log(categories)
 
     const category = categories.filter((category) => category.id === Number(categoryId))
 
-    console.log(category)
 
     const formatDate = (dateString) => {
         const dateObj = new Date(dateString);
@@ -102,7 +99,7 @@ const Categories = (props) => {
 
     useEffect(() => {
         sortPosts(); // Sort the posts by "Most Recent" when the component mounts
-    }, []);
+    },);
 
     useEffect(() => {
         setIsLoaded(true);

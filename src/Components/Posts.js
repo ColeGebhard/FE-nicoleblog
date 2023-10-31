@@ -60,20 +60,22 @@ const Posts = (props) => {
                         <h3>Nicole Bondurant</h3>
                     </Link>
                     <span className="headerContent">
-                    <Link to={`/post/${headlinePost.id}`}>
-                        <img
-                            id="postImage"
-                            alt={headlinePost.title}
-                            src={`data:image/jpeg;base64,${Buffer.from(headlinePost.image.data).toString("base64")}`}
-                        />                    </Link>
-                    <p>
-                        {headlinePost.body
-                            .replace(/<[^>]*>/g, '') // Remove HTML tags
-                            .replace(/&nbsp;/g, ' ') // Replace &nbsp; with a space
-                            .split(' ')
-                            .slice(0, 20)
-                            .join(' ')}...
-                    </p>
+                        <Link to={`/post/${headlinePost.id}`}>
+                            <img
+                                id="postImage"
+                                alt={headlinePost.title}
+                                src={`data:image/jpeg;base64,${Buffer.from(headlinePost.image.data).toString("base64")}`}
+                            />                    </Link>
+                        <p>
+                            {
+                                (headlinePost.body.match(/<p[^>]*>(.*?)<\/p>/i) || [])[1]
+                                    .replace(/<[^>]*>/g, '') // Remove HTML tags
+                                    .split(' ')
+                                    .slice(0, 20)
+                                    .join(' ')
+                            }
+                            ...
+                        </p>
                     </span>
                 </div>) : null}
             <div className="mainBody">
@@ -116,7 +118,7 @@ const Posts = (props) => {
                             <Link to={`${category.id}`}>{category.name}</Link>
                         </React.Fragment>
                     ))}.
-                     <br /><Link to={`/posts`}>All Topics</Link>.
+                    <br /><Link to={`/posts`}>All Topics</Link>.
                 </h3>
                 {/* <div className="horizontalRule" />
                 <h2>Featured</h2>

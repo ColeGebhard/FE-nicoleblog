@@ -49,8 +49,6 @@ const SinglePost = (props) => {
     return shuffledArray.slice(0, count);
   };
 
-  console.log(post)
-
   const randomPosts = getRandomIndices(posts, 3, post)
 
   return post ? (

@@ -10,7 +10,8 @@ import {
   Footer,
   Admin,
   EditPost,
-  Categories
+  Categories,
+  DeleteEmail
 } from './Components/index.js';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from 'react-notifications';
@@ -68,8 +69,6 @@ function App() {
     }
   }, [token]);
 
-  console.log(posts)
-
   return loading && !isDataLoaded() ? (
     <span className="loader">
       <span className="loader-inner">
@@ -96,6 +95,7 @@ function App() {
         <Route path="/adminfeatures" element={<Admin posts={posts} me={me} categories={categories} token={token} />} />
         <Route path='/posts' element={<AllPosts posts={posts} categories={categories}/>}/>
         <Route path='/posts/:categoryId' element={<Categories posts={posts} categories={categories}/>}/>
+        <Route path='/unsubsribe' element={<DeleteEmail/>}/>
       </Routes>
 
       <Footer />

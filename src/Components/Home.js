@@ -145,13 +145,13 @@ const Home = () => {
               >
                 About
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className="navList"
                 to={'/contact'}
                 onClick={() => setNavbarOpen(false)}
               >
                 Contact
-              </NavLink>
+              </NavLink> */}
               <SubscribeForm />
 
             </div>
