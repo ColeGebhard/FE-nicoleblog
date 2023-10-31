@@ -1,9 +1,6 @@
 // const BASE_URL = "http://localhost:8000/api"
 const BASE_URL = process.env.REACT_APP_API_KEY;
 
-console.log(BASE_URL)
-
-
 export async function getAllPosts() {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
