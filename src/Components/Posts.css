@@ -30,7 +30,7 @@
 }
 
 .headline img {
-  /* width: 88vw; */
+  max-width: 88vw;
   max-height: 30em;
   color: #181A18;
   border-top: dotted 0.2em transparent; /* Add a transparent border */
