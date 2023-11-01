@@ -115,7 +115,7 @@ const Posts = (props) => {
                         <React.Fragment key={category.id}>
                             {index > 0 && index < categories.length - 1 ? ', ' : ''}
                             {index === categories.length - 1 && index > 0 ? ' and ' : ''}
-                            <Link to={`${category.id}`}>{category.name}</Link>
+                            <Link to={`/posts/${category.id}`}>{category.name}</Link>
                         </React.Fragment>
                     ))}.
                     <br /><Link to={`/posts`}>All Topics</Link>.
