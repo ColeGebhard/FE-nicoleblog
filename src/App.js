@@ -11,7 +11,8 @@ import {
   Admin,
   EditPost,
   Categories,
-  DeleteEmail
+  DeleteEmail,
+  NotFound
 } from './Components/index.js';
 import 'react-notifications/lib/notifications.css';
 import {NotificationContainer} from 'react-notifications';
@@ -96,6 +97,9 @@ function App() {
         <Route path='/posts' element={<AllPosts posts={posts} categories={categories}/>}/>
         <Route path='/posts/:categoryId' element={<Categories posts={posts} categories={categories}/>}/>
         <Route path='/unsubsribe' element={<DeleteEmail/>}/>
+        <Route path="*" element={<NotFound />} />
+        <Route path="" redirectTo="/" />
+
       </Routes>
 
       <Footer />

@@ -71,7 +71,7 @@ const Posts = (props) => {
                                 (headlinePost.body.match(/<p[^>]*>(.*?)<\/p>/i) || [])[1]
                                     .replace(/<[^>]*>/g, '') // Remove HTML tags
                                     .split(' ')
-                                    .slice(0, 20)
+                                    .slice(0, 60)
                                     .join(' ')
                             }
                             ...

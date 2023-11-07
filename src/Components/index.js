@@ -10,6 +10,7 @@ export { default as EditPost } from "./EditPost"
 export { default as AllPosts } from "./AllPosts"
 export { default as Categories } from "./Category"
 export { default as DeleteEmail } from "./DeleteEmail"
+export { default as NotFound } from "./NotFound"
 
 
 
