@@ -98,8 +98,6 @@ function App() {
         <Route path='/posts/:categoryId' element={<Categories posts={posts} categories={categories}/>}/>
         <Route path='/unsubsribe' element={<DeleteEmail/>}/>
         <Route path="*" element={<NotFound />} />
-        <Route path="" redirectTo="/" />
-
       </Routes>
 
       <Footer />
