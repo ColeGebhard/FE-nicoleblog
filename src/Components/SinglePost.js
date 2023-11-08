@@ -8,6 +8,7 @@ import './SinglePost.css';
 const SinglePost = (props) => {
   const { posts } = props;
   const { id } = useParams();
+
   const post = posts.find((post) => parseInt(id) === post.id);
   const navigate = useNavigate();
 
