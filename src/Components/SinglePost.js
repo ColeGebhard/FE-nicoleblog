@@ -1,7 +1,6 @@
 import React from "react";
 import { Buffer } from "buffer";
-import { Link, useParams } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import './SinglePost.css';
 
@@ -10,7 +9,7 @@ const SinglePost = (props) => {
   const { id } = useParams();
 
   const post = posts.find((post) => parseInt(id) === post.id);
-  const navigate = useNavigate();
+  const history = useNavigate();
 
 
   const formatDate = (dateString) => {
@@ -50,7 +49,18 @@ const SinglePost = (props) => {
     return shuffledArray.slice(0, count);
   };
 
-  const randomPosts = getRandomIndices(posts, 3, post)
+  const randomPosts = getRandomIndices(posts, 3, post);
+
+  const goBack = () => {
+    // Check if the referrer is external (e.g., email)
+    if (document.referrer && !document.referrer.startsWith(window.location.origin)) {
+      // Redirect to the home page
+      history('/');
+    } else {
+      // Navigate back in the browser history
+      history(-1);
+    }
+  };
 
   return post ? (
     <>
@@ -58,7 +68,7 @@ const SinglePost = (props) => {
         <div className="headerElement">
           <span
             className="backArrow"
-            onClick={() => navigate(-1)}
+            onClick={goBack}
             style={{
               cursor: 'pointer',
               display: 'flex',

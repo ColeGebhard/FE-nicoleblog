@@ -65,7 +65,7 @@ function App() {
           setMe(fetchedMe);
         })
         .catch((e) => {
-          throw new Error(`Failed to fetch myself.`);
+          throw new Error(e, `Failed to fetch myself.`);
         });
     }
   }, [token]);
